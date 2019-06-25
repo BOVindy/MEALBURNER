@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <br>
+    <br>
+    <div class="wholesomecontainer">
+        <form class="add_form" action="{% url 'create' %}" method="POST">
+            {% csrf_token %}
+            <a class="btn btn-info" href="{% url 'meals' %}">Daily Meals</a>
+            <br>
+            <br>
+            <div class="form-group">
+                <label for="sometype">foodname:</label>
+                <input name="foodname" type="text" class="form-control" placeholder="exampletext">
+            </div>
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-success form_submit">
+            </div>
+        </form>
+    </div>
+
+{% endblock content %}

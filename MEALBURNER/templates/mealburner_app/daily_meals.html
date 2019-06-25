@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="wholesomecontainer">
+        <br>
+        <h2 class="table_heading">Meals eaten on {{ Meal.date }}
+        <a href="{% url 'create' %}" class="btn btn-primary add_item">Add a meal</a>
+        <br>
+        <br>
+        {% if daily_meals %}
+            <div class="list_table">
+                <table class="table_main">
+                    <thead class="thead-dark">
+                        <tr class="table_header">
+                            <th class="table_head" scope="col">Meal:</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for meal in daily_meals %}
+                        
+                        <tr>
+                            <td>
+                                <form class="view_form" action="{% url 'view' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id" value="{{ meal.id }}">
+                                    <input type="hidden" name="view" value=True>
+                                    <input class="td_button btn btn-success" type="submit" value="{{ meal.name }}">
+                                </form>
+                            </td>
+                        </tr>
+                        
+                        {% endfor %}
+        
+                    </tbody>
+                </table>
+            </div>
+
+        {% else %}
+            <table class="list_table">
+                <thead class="thead-dark">
+                    <tr class="table_header">
+                        <th class="table_head" scope="col">Meal name</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>You haven't added any meals yet</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        {% endif %}}
+
+        <br>
+        <br>
+    </div>
+    <br><br><br><br><br>
+
+{% endblock content %}
