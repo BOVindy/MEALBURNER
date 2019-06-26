@@ -56,18 +56,19 @@ def update_meal(request, id):
     meal_update = Meal.objects.get(id=id)
 
     if request.method == 'POST':
+        print('alkdsaf')
         for key, value in request.POST.items():
             if(value and key != "csrfmiddlewaretoken"):
                 setattr(meal_update, key, value)
         meal_update.save()
 
-        return redirect('daily_meals')
+        return redirect('view')
 
     context = {
         "meal": meal_update
     }    
-    meal_update.save()
-    return render(request, 'mealburner_app/create_meal.html', context=context)
+
+    return render(request, 'mealburner_app/update_meal.html', context=context)
         
         
 

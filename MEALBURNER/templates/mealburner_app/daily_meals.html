@@ -27,12 +27,12 @@
                         
                         <tr>
                             <td>
-                                <form class="view_form" action="{% url 'update' %}" method="POST">
+                                <a href="{% url 'update' meal.id %}">
                                     {% csrf_token %}
                                     <input type="hidden" name="id" value="{{ meal.id }}">
                                     <input type="hidden" name="update" value=True>
                                     <input class="td_button btn btn-success" type="submit" value="{{ meal.food_name }}">
-                                </form>
+                                </a>
                             </td>
                         </tr>
                         
