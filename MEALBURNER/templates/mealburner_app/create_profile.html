@@ -1,24 +1,47 @@
 {% extends 'base.html' %}
 {% block content %}
-<br>
-<br>
-<h1 id='header_port' class='table_heading'>Your Profile</h1>
 
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
+<br>
+    <br>
+    <div class="container">
+        <form class="add_form" action="{% url 'profile' %}" method="POST">
+            {% csrf_token %}
+            
+            <a class="btn_back btn btn-dark" href="{% url 'view' %}">Go Back</a>
+            <br>
+            <br>
+            <div class="form-group">
+                <label for="name">Username</label>
+                <input name="username" type="text" class="name_form form-control">
+            </div>
+            <div class="form-group">
+              <label for="">First Name</label>
+              <input name="firstname" type="text" class="class_form form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Last Name</label>
+                <input name="lastname" type="text" class='class_form form-control'>
+            </div>
+            <div class="form-group">
+                <label for="">Weight</label>
+                <input name="weight" type="number" step="0.01" class="price_form form-control">
+            </div>
+            <div class='form-group'>
+                <label for=''>Height</label> 
+                <input name='height' type='number' step='0.01' class="price_form form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Age</label>
+                <input name="age" type="number" step="0.01" class="price_form form-control">
+            </div>
+            <div class="form-group">
+                <label for="">Activity Level</label>
+                <input name="age" type="text" class='class_form form-control'>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="success_button btn btn-outline-success form_submit ">
+            </div>
+        </form>
+    </div>
 
 {% endblock content %}

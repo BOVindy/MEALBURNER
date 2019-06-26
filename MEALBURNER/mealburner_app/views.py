@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from .models import Meal, Profile
 from datetime import datetime
 
+
+
 def index(request):
     return render(request, 'mealburner_app/home.html')
 
@@ -74,7 +76,9 @@ def profile_create(request):
     if request.method == "POST":
 
         new_profile = Profile()
-        new_profile.username = request.POST["username"]
+        new_profile.user = request.POST["username"]
+        new_profile.firstname = request.POST['firstname']
+        new_profile.lastname = request.POST['lastname']
         new_profile.weight = request.POST["weight"]
         new_profile.height = request.POST["height"]
         new_profile.age = request.POST["age"]
@@ -95,3 +99,5 @@ def view_profile(request):
     print(my_profile)
 
     return render(request, 'mealburner_app/profile_view.html', context=context)
+
+
