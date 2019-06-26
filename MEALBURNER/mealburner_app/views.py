@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.models import User
+from .models import Meal, Profile
 
 def index(request):
     return render(request, 'mealburner_app/home.html')
