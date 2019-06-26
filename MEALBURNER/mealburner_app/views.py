@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.models import User
 from .models import Meal, Profile
+from datetime import datetime
 
 def index(request):
     return render(request, 'mealburner_app/home.html')
@@ -23,14 +24,13 @@ def create_meal(request):
     if request.method == "POST":
 
         new_meal = Meal()
-        new_meals.food_name = request.POST["food_name"]
-        new_meals.calories = request.POST["calories"]
-        new_meals.meal_type = request.POST["meal_type"]
-        new_meals.date = request.POST["date"]
+        new_meal.food_name = request.POST["food_name"]
+        new_meal.calories = request.POST["calories"]
+        new_meal.meal_type = request.POST["meal_type"]
 
         new_meal.save()
 
-        return redirect("daily_meals")
+        return redirect("view")
 
     return render(request, "mealburner_app/create_meal.html")
 
