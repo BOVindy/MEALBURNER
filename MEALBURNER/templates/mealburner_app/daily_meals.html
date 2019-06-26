@@ -4,7 +4,7 @@
 
     <div class="wholesomecontainer">
         <br>
-        <h2 class="table_heading">Meals eaten on {{ Meal.date }}
+        <h2 class="table_heading">Meals eaten on {{ Meal.date }}</h2>
         <a href="{% url 'create' %}" class="btn btn-primary add_item">Add a meal</a>
         <br>
         <br>
@@ -27,11 +27,10 @@
                         
                         <tr>
                             <td>
-                                <form class="view_form" action="{% url 'view' %}" method="POST">
+                                <form class="view_form" action="{% url 'update' %}" method="POST">
                                     {% csrf_token %}
                                     <input type="hidden" name="id" value="{{ meal.id }}">
-                                    <input type="hidden" name="view" value=True>
-                                    ##########################################update
+                                    <input type="hidden" name="update" value=True>
                                     <input class="td_button btn btn-success" type="submit" value="{{ meal.food_name }}">
                                 </form>
                             </td>
