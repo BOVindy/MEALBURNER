@@ -6,23 +6,29 @@
     <br>
     <div class="wholesomecontainer">
         <a class="btn btn-info" href="{% url 'view' %}">Daily Meals</a>
-        <form class="add_form" action="{% url 'create' %}" method="POST">
+        <form class="add_form" action="{% url 'create' %}" method="POST" novalidate>
             {% csrf_token %}
             <br>
             <br>
             <div class="form-group">
                 <label for="food_name">food name:</label>
-                <input name="food_name" type="text" class="form-control" id="food_name_input" placeholder="enter the name of the food you had here...">
+                <input name="food_name" type="text" class="form-control" id="food_name_input" placeholder="enter the name of the food you had here..." required>
+                <div class="invalid-feedback">
+                    This field is required!!!
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="calories">calories:</label>
-                <input name="calories" type="number" class="form-control" id="calories_input" placeholder="enter amount of calories that you ate here...">
+                <input name="calories" type="number" class="form-control" id="calories_input" placeholder="enter amount of calories that you ate here..." required>
+                <div class="invalid-feedback">
+                    This field is required!!!
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="meal_type">meal type:</label>
-                <select name="meal_type" class="form-control" id="meal_type_input">
+                <select name="meal_type" class="form-control" id="meal_type_input" required>
                     <option>breakfast</option>
                     <option>brunch</option>
                     <option>lunch</option>
@@ -33,7 +39,7 @@
 
 
             <button type="submit" class="btn btn-success">submit</button>
-            
+
         </form>
 
 {% endblock content %}
