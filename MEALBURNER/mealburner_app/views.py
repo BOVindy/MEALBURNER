@@ -22,25 +22,12 @@ def create_meal(request):
 
     if request.method == "POST":
 
-        new_meal = Meal():
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
-        new_meals. = request.POST["datatype"]
+        new_meal = Meal()
+        new_meals.food_name = request.POST["food_name"]
+        new_meals.calories = request.POST["calories"]
+        new_meals.meal_type = request.POST["meal_type"]
+        new_meals.date = request.POST["meal_date"]
+       
 
         new_meal.save()
 
@@ -60,10 +47,12 @@ def delete(request):
 
     return redirect("daily_meals")
 
-def history_view(request):
+# def history_view(request):
 
-    if request.method == "POST":
+#     if request.method == "POST":
 
-        for loop stuff
+#         for loop stuff
 
-    return render(request, "home")
+#     return render(request, "home")
+
+
