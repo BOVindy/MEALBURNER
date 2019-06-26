@@ -13,7 +13,11 @@
                 <table class="table_main">
                     <thead class="thead-dark">
                         <tr class="table_header">
-                            <th class="table_head" scope="col">Meal:</th>
+                            <th class="table_head" scope="col">meal:</th>
+                            <th class="table_head" scope="col">calories:</th>
+                            <th class="table_head" scope="col">meal type</th>
+                            <th class="table_head" scope="col">date</th>
+                            <th class="table_head" scope="col"> </th>
                         </tr>
                     </thead>
 
@@ -27,11 +31,35 @@
                                     {% csrf_token %}
                                     <input type="hidden" name="id" value="{{ meal.id }}">
                                     <input type="hidden" name="view" value=True>
-                                    <input class="td_button btn btn-success" type="submit" value="{{ meal.name }}">
+                                    ##########################################update
+                                    <input class="td_button btn btn-success" type="submit" value="{{ meal.food_name }}">
                                 </form>
                             </td>
                         </tr>
                         
+                        <tr>
+                            <td>{{ meal.calories }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ meal.meal_type }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ meal.date }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <form action="{% url 'delete' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id" value="{{ item.id }}">
+                                    <input type="hidden" name="delete" value=True>
+                                    <input class="td_button btn btn-success" type="submit" value="Delete Meal">
+                                </form>
+                            </td>
+                        </tr>
+
                         {% endfor %}
         
                     </tbody>
@@ -42,13 +70,21 @@
             <table class="list_table">
                 <thead class="thead-dark">
                     <tr class="table_header">
-                        <th class="table_head" scope="col">Meal name</th>
+                        <th class="table_head" scope="col">meal:</th>
+                        <th class="table_head" scope="col">calories:</th>
+                        <th class="table_head" scope="col">meal type</th>
+                        <th class="table_head" scope="col">date</th>
+                        <th class="table_head" scope="col"> </th>
                     </tr>
                 </thead>
                 <tbody>
 
                     <tr>
                         <td>You haven't added any meals yet</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>
