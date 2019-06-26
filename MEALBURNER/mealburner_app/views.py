@@ -2,9 +2,6 @@ from django.shortcuts import render
 
 def index(request):
     return render(request, 'mealburner_app/home.html')
-# Create your views here.
-def index(request):
-    return render(request, "mealburner_app/home.html")
 
 def daily_view(request):
 
@@ -22,12 +19,11 @@ def create_meal(request):
 
     if request.method == "POST":
 
-        new_meal = Meal()
+        new_meal = Meal():
         new_meals.food_name = request.POST["food_name"]
         new_meals.calories = request.POST["calories"]
         new_meals.meal_type = request.POST["meal_type"]
-        new_meals.date = request.POST["meal_date"]
-       
+        new_meals.date = request.POST["date"]
 
         new_meal.save()
 
@@ -47,12 +43,16 @@ def delete(request):
 
     return redirect("daily_meals")
 
-# def history_view(request):
 
-#     if request.method == "POST":
+    return render(request, "home")
 
-#         for loop stuff
+def profile_create(request):
 
-#     return render(request, "home")
+    if request.method == "POST":
 
-
+        new_profile = Profile():
+        new_profile.username = request.POST["username"]
+        new_profile.weight = request.POST["weight"]
+        new_profile.height = request.POST["height"]
+        new_profile.age = request.POST["age"]
+        new_profile.activity_level = request.POST["activity_level"]
