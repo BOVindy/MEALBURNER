@@ -6,18 +6,18 @@
     <br>
     <div class="wholesomecontainer">
         <a class="btn btn-info" href="{% url 'view' %}">Daily Meals</a>
-        <form class="add_form" action="{% url 'create' %}" method="POST">
+        <form class="add_form" action="{% url 'update' meal.id %}" method="POST">
             {% csrf_token %}
             <br>
             <br>
             <div class="form-group">
                 <label for="food_name">food name:</label>
-                <input name="food_name" type="text" class="form-control" id="food_name_input" placeholder="enter the name of the food you had here...">
+                <input name="food_name" type="text" class="form-control" id="food_name_input" value="{{ meal.food_name }}">
             </div>
 
             <div class="form-group">
                 <label for="calories">calories:</label>
-                <input name="calories" type="number" class="form-control" id="calories_input" placeholder="enter amount of calories that you ate here...">
+                <input name="calories" type="number" class="form-control" id="calories_input" value="{{ meal.calories }}">
             </div>
 
             <div class="form-group">

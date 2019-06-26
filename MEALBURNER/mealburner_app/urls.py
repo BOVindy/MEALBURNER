@@ -8,6 +8,6 @@ urlpatterns = [
     path('create_meal', create_meal, name='create'),
     path('delete_meal', delete, name='delete'),
     path('profile', profile_create, name='profile'),
-    path('update', update_meal, name='update'),
+    path('update/<int:id>', update_meal, name='update'),
     path('view_profile', view_profile, name='view_prof')
 ]
