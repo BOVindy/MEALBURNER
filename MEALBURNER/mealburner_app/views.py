@@ -37,30 +37,35 @@ def create_meal(request):
 def delete(request):
 
     if request.method == "POST":
-
+        print(request.POST['id'])
         to_delete = Meal.objects.get(id=request.POST["id"])
 
         to_delete.delete()
 
-        return redirect("daily_meals")
+        return redirect("view")
 
         
 
 
     return render(request, "home")
 
-def update_meal(request):
+def update_meal(request, id):
+
+    meal_update = Meal.objects.get(id=id)
+
     if request.method == 'POST':
-        meal = Meal.objects.get(id=request.POST.get('id'))
-        meal.food_name = request.POST['food_name']
-        meal.food_calories = request.POST['calories']
-        meal.meal_type = request.POST['meal_type']
-        meal.date = request.POST['date']
-        meal.save()
+        for key, value in request.POST.items():
+            if(value and key != "csrfmiddlewaretoken"):
+                setattr(meal_update, key, value)
+        meal_update.save()
 
         return redirect('daily_meals')
-    
-    return render(request, 'mealburner_app/create_meal.html')
+
+    context = {
+        "meal": meal_update
+    }    
+    meal_update.save()
+    return render(request, 'mealburner_app/create_meal.html', context=context)
         
         
 
