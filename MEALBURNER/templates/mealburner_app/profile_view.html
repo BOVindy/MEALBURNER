@@ -1,0 +1,61 @@
+{% comment %} {% extends 'base.html' %}
+{% block content %}
+<br>
+<br>
+<div class='container'>
+  <h1 id='header_port' class='table_heading'>Your Profile</h1>
+
+</div>
+<div class='container'>
+    
+    <div class='Profile'>
+        <table class="table table-striped table-light">
+  <thead class = 'thead-dark' >
+    <tr>
+      
+      <th scope="col"></th>
+      <th scope="col">Asset Class</th>
+      <th scope="col">Asset Price</th>
+      <th scope='col'>Quantity of Asset</th>
+      <th scope='col'>Sell Asset</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% if current%}
+        {% for item in current %}
+          
+    <tr>
+      <td>{{ item.asset_name }}</td>
+      <td>{{ item.asset_class }}</td>
+      <td>${{ item.price }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>
+        <form action="{% url 'sold' %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name='id' value="{{ item.id }}">
+          <input type="hidden" name='sold' value=True> 
+          <input class='td_button btn btn-outline-success' type='submit' value='Sell Item'>                                 
+        </form>
+      </td>
+    </tr> 
+        {% endfor %}
+    {% else %}
+        <tr>
+            <td>No owned Assets</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    {% endif %}
+
+    
+  </tbody>
+
+</div>
+
+    
+{{ item.return }}
+  </tbody>
+</div>
+{% endblock content %} {% endcomment %}

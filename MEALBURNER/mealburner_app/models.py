@@ -12,12 +12,12 @@ class Meal(models.Model):
 
 class Profile(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
+    firstname = models.CharField(max_length=30)
+    lastname = models.CharField(max_length=30)
     weight = models.DecimalField(max_digits=10, decimal_places=2)
     height = models.DecimalField(max_digits=30, decimal_places=2)
     age = models.DecimalField(max_digits=2, decimal_places=0)
     activity_level = models.CharField(max_length=30)
-
-
     
   
 

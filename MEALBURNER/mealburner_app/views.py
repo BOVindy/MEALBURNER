@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 
 def index(request):
     return render(request, 'mealburner_app/home.html')
@@ -19,7 +21,7 @@ def create_meal(request):
 
     if request.method == "POST":
 
-        new_meal = Meal():
+        new_meal = Meal()
         new_meals.food_name = request.POST["food_name"]
         new_meals.calories = request.POST["calories"]
         new_meals.meal_type = request.POST["meal_type"]
@@ -41,18 +43,49 @@ def delete(request):
 
         return redirect("daily_meals")
 
-    return redirect("daily_meals")
+        
 
 
     return render(request, "home")
+
+def update_meal(request):
+    if request.method == 'POST':
+        meal = Meal.objects.get(id=request.POST.get('id'))
+        meal.food_name = request.POST['food_name']
+        meal.food_calories = request.POST['calories']
+        meal.meal_type = request.POST['meal_type']
+        meal.date = request.POST['date']
+        meal.save()
+
+        return redirect('daily_meals')
+    
+    return render(request, 'mealburner_app/create_meal.html')
+        
+        
 
 def profile_create(request):
 
     if request.method == "POST":
 
-        new_profile = Profile():
+        new_profile = Profile()
         new_profile.username = request.POST["username"]
         new_profile.weight = request.POST["weight"]
         new_profile.height = request.POST["height"]
         new_profile.age = request.POST["age"]
         new_profile.activity_level = request.POST["activity_level"]
+        
+        return redirect('profile')
+    
+    return render(request, 'mealburner_app/create_profile.html')
+
+def view_profile(request):
+
+    my_profile = Profile.objects.all()
+
+    context = {
+        'profile' : my_profile
+    }
+
+    print(my_profile)
+
+    return render(request, 'mealburner_app/profile_view.html', context=context)
