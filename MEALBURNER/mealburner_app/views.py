@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import User
 from .models import Meal, Profile
 
+
+
 def index(request):
     return render(request, 'mealburner_app/home.html')
 
@@ -23,14 +25,13 @@ def create_meal(request):
     if request.method == "POST":
 
         new_meal = Meal()
-        new_meals.food_name = request.POST["food_name"]
-        new_meals.calories = request.POST["calories"]
-        new_meals.meal_type = request.POST["meal_type"]
-        new_meals.date = request.POST["date"]
+        new_meal.food_name = request.POST["food_name"]
+        new_meal.calories = request.POST["calories"]
+        new_meal.meal_type = request.POST["meal_type"]
 
         new_meal.save()
 
-        return redirect("daily_meals")
+        return redirect("view")
 
     return render(request, "mealburner_app/create_meal.html")
 
@@ -69,7 +70,9 @@ def profile_create(request):
     if request.method == "POST":
 
         new_profile = Profile()
-        new_profile.username = request.POST["username"]
+        new_profile.user = request.POST["username"]
+        new_profile.firstname = request.POST['firstname']
+        new_profile.lastname = request.POST['lastname']
         new_profile.weight = request.POST["weight"]
         new_profile.height = request.POST["height"]
         new_profile.age = request.POST["age"]
@@ -90,3 +93,5 @@ def view_profile(request):
     print(my_profile)
 
     return render(request, 'mealburner_app/profile_view.html', context=context)
+
+
