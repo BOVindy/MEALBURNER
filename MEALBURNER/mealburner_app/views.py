@@ -14,12 +14,28 @@ def daily_view(request):
     my_meals = Meal.objects.all()
     my_activities = Activity.objects.all()
 
+    total = 0
+    total_cal = 0
+    total_cal_burn = 0
+
+    for meal in my_meals:
+        total_cal += meal.calories
+
+    for activity in my_activities:
+        total_cal_burn += activity.calories_burned
+
+    total = total_cal - total_cal_burn
+
     context = {
         "daily_meals": my_meals,
-        "daily_activities": my_activities
+        "daily_activities": my_activities,
+        "total": total,
+        "daily_cal": total_cal,
+        "daily_cal_burn": total_cal_burn
+
     }
-    print(my_meals)
-    print(my_activities)
+#    print(my_meals)
+#    print(my_activities)
 
     return render(request, "mealburner_app/daily_meals.html", context=context)
 
