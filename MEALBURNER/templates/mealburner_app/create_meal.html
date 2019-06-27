@@ -6,7 +6,7 @@
     <br>
     <div class="wholesomecontainer">
         <a class="btn btn-info" href="{% url 'view' %}">Daily Meals</a>
-        <form class="add_form" action="{% url 'create' %}" method="POST">
+        <form class="add_form" action="{% url 'create_meal' %}" method="POST">
             {% csrf_token %}
             <br>
             <br>

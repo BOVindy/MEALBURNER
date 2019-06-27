@@ -40,7 +40,7 @@ def create_meal(request):
     return render(request, "mealburner_app/create_meal.html")
 
 
-def delete(request):
+def delete_meal(request):
 
     if request.method == "POST":
         print(request.POST['id'])
@@ -122,7 +122,7 @@ def create_activity(request):
     return render(request, "mealburner_app/create_activity.html")
 
 
-def delete(request):
+def delete_activity(request):
 
     if request.method == "POST":
         print(request.POST['id'])

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <br>
+    <br>
+    <div class="wholesomecontainer">
+        <a class="btn btn-info" href="{% url 'view' %}">Daily Activities</a>
+        <form class="add_form" action="{% url 'update_activity' activity.id %}" method="POST">
+            {% csrf_token %}
+            <br>
+            <br>
+            <div class="form-group">
+                <label for="activity">Activity:</label>
+                <input name="activity" type="text" class="form-control" id="activity_input" value="{{ activity.activity }}">
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Duration:</label>
+                <input name="duration" type="number" class="form-control" id="duration_input" value="{{ activity.duration }}">
+            </div>
+
+            <div class="form-group">
+                <label for="calories_burned">Calories Burned:</label>
+                <input name="calories_burned" type="number" class="form-control" id="calories_burned_input" value="{{ activity.calories_burned }}">
+            </div>
+
+            <button type="submit" class="btn btn-success">submit</button>
+            
+        </form>
+
+{% endblock content %}
