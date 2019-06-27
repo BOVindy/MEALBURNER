@@ -97,7 +97,7 @@
         <br>
         <br>
 
-        {% if daily_meals %}
+        {% if daily_activities %}
             <div class="list_table">
                 <table class="table_main">
                     <thead class="thead-dark">
@@ -112,7 +112,7 @@
 
                     <tbody>
 
-                        {% for activity in daily_meals %}
+                        {% for activity in daily_activities %}
                         
                         <tr>
                             <td>
@@ -182,7 +182,7 @@
         <br>
         <br>
 
-
+        <p>your caloric balance is currently at {{ total }}
 
 
     </div>
