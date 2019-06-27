@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth.models import User
 from .models import Meal, Profile, Activity
 from datetime import datetime
 
@@ -88,7 +87,7 @@ def profile_create(request):
         new_profile.activity_level = request.POST["activity_level"]
         new_profile.password = request.POST['password']
         
-        
+        new_profile.save()
         user = User.objects.create_user(username=new_profile.user, password=new_profile.password)
         user.save()
         
@@ -97,9 +96,18 @@ def profile_create(request):
         
     return render(request, 'mealburner_app/create_profile.html')
 
-def view_profile(request):
+def view_profile(request, id):
 
-    my_profile = Profile.objects.all()
+    usr = User.objects.get(id=id)
+    print(usr)
+    all_profile = Profile.objects.all()
+    print(all_profile)
+    for p in all_profile:
+        print(p.firstname)
+        if p.firstname == usr.username:
+            my_profile = p
+        else:
+            print("NOPE")
 
     context = {
         'profile' : my_profile
