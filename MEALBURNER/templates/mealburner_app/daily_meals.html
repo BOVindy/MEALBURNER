@@ -4,8 +4,8 @@
 
     <div class="wholesomecontainer">
         <br>
-        <h2 class="table_heading">Meals eaten on {{ Meal.date }}</h2>
-        <a href="{% url 'create' %}" class="btn btn-primary add_item">Add a meal</a>
+        <h2 class="table_heading">Meals eaten on {{ meal.date }}</h2>
+        <a href="{% url 'create_meal' %}" class="btn btn-primary add_item">Add a meal</a>
         <br>
         <br>
         {% if daily_meals %}
@@ -27,7 +27,7 @@
                         
                         <tr>
                             <td>
-                                <a href="{% url 'update' meal.id %}">
+                                <a href="{% url 'update_meal' meal.id %}">
                                     {% csrf_token %}
                                     <input type="hidden" name="id" value="{{ meal.id }}">
                                     <input type="hidden" name="update" value=True>
@@ -50,10 +50,10 @@
 
                         <tr>
                             <td>
-                                <form action="{% url 'delete' %}" method="POST">
+                                <form action="{% url 'delete_meal' %}" method="POST">
                                     {% csrf_token %}
                                     <input type="hidden" name="id" value="{{ meal.id }}">
-                                    <input type="hidden" name="delete" value=True>
+                                    <input type="hidden" name="delete_meal" value=True>
                                     <input class="td_button btn btn-success" type="submit" value="Delete Meal">
                                 </form>
                             </td>
@@ -88,10 +88,103 @@
                 </tbody>
             </table>
 
-        {% endif %}}
+        {% endif %}
+############################################################################################
+        <br>
+        <br>
+        <h2 class="table_heading">Activities on {{ activity.date }}</h2>
+        <a href="{% url 'create_activity' %}" class="btn btn-primary add_item">Add an activity</a>
+        <br>
+        <br>
+
+        {% if daily_meals %}
+            <div class="list_table">
+                <table class="table_main">
+                    <thead class="thead-dark">
+                        <tr class="table_header">
+                            <th class="table_head" scope="col">activity:</th>
+                            <th class="table_head" scope="col">duration:</th>
+                            <th class="table_head" scope="col">calories burned</th>
+                            <th class="table_head" scope="col">date</th>
+                            <th class="table_head" scope="col"> </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for activity in daily_meals %}
+                        
+                        <tr>
+                            <td>
+                                <a href="{% url 'update_activity' activity.id %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id" value="{{ activity.id }}">
+                                    <input type="hidden" name="update" value=True>
+                                    <input class="td_button btn btn-success" type="submit" value="{{ activity.activity }}">
+                                </a>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td>{{ activity.duration }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ activity.calories_burned }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>{{ activity.date }}</td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <form action="{% url 'delete_activity' %}" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id" value="{{ activity.id }}">
+                                    <input type="hidden" name="delete_activity" value=True>
+                                    <input class="td_button btn btn-success" type="submit" value="Delete activity">
+                                </form>
+                            </td>
+                        </tr>
+
+                        {% endfor %}
+        
+                    </tbody>
+                </table>
+            </div>
+
+        {% else %}
+            <table class="list_table">
+                <thead class="thead-dark">
+                    <tr class="table_header">
+                        <th class="table_head" scope="col">activity:</th>
+                        <th class="table_head" scope="col">duration:</th>
+                        <th class="table_head" scope="col">calories_burned</th>
+                        <th class="table_head" scope="col">date</th>
+                        <th class="table_head" scope="col"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>You haven't added any activities yet</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        {% endif %}
 
         <br>
         <br>
+
+
+
+
     </div>
     <br><br><br><br><br>
 

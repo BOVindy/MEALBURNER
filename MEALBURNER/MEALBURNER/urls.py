@@ -21,6 +21,6 @@ urlpatterns = [
     path("", include("mealburner_app.urls")),
     path('admin/', admin.site.urls),
     path('mealburner_app/', include('django.contrib.auth.urls')),
-    path('home', TemplateView.as_view(template_name='home.html'))
+    path('home/', TemplateView.as_view(template_name='home.html'))
 
 ]
