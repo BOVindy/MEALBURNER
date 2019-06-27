@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth.models import User
-from .models import Meal, Profile
+from .models import Meal, Profile, Activity
 from datetime import datetime
 
 
@@ -12,11 +12,14 @@ def index(request):
 def daily_view(request):
 
     my_meals = Meal.objects.all()
+    my_activities = Activity.objects.all()
 
     context = {
-        "daily_meals": my_meals
+        "daily_meals": my_meals,
+        "daily_activities": my_activities
     }
     print(my_meals)
+    print(my_activities)
 
     return render(request, "mealburner_app/daily_meals.html", context=context)
 
@@ -36,6 +39,7 @@ def create_meal(request):
 
     return render(request, "mealburner_app/create_meal.html")
 
+
 def delete(request):
 
     if request.method == "POST":
@@ -46,17 +50,15 @@ def delete(request):
 
         return redirect("view")
 
-        
-
-
     return render(request, "home")
+
 
 def update_meal(request, id):
 
     meal_update = Meal.objects.get(id=id)
 
     if request.method == 'POST':
-        print('alkdsaf')
+        print('updatemealexists')
         for key, value in request.POST.items():
             if(value and key != "csrfmiddlewaretoken"):
                 setattr(meal_update, key, value)
@@ -102,3 +104,52 @@ def view_profile(request):
     return render(request, 'mealburner_app/profile_view.html', context=context)
 
 
+#################################################################
+
+def create_activity(request):
+
+    if request.method == "POST":
+
+        new_activity = Activity()
+        new_activity.activity = request.POST["activity"]
+        new_activity.duration = request.POST["duration"]
+        new_activity.calories_burned = request.POST["calories_burned"]
+
+        new_activity.save()
+
+        return redirect("view")
+
+    return render(request, "mealburner_app/create_activity.html")
+
+
+def delete(request):
+
+    if request.method == "POST":
+        print(request.POST['id'])
+        to_delete = Activity.objects.get(id=request.POST["id"])
+
+        to_delete.delete()
+
+        return redirect("view")
+
+    return render(request, "home")
+
+
+def update_activity(request, id):
+
+    activity_update = Activity.objects.get(id=id)
+
+    if request.method == 'POST':
+        print('updateactivityexists')
+        for key, value in request.POST.items():
+            if(value and key != "csrfmiddlewaretoken"):
+                setattr(activity_update, key, value)
+        activity_update.save()
+
+        return redirect('view')
+
+    context = {
+        "activity": activity_update
+    }    
+
+    return render(request, 'mealburner_app/update_activity.html', context=context)

@@ -18,7 +18,12 @@ class Profile(models.Model):
     height = models.DecimalField(max_digits=30, decimal_places=2)
     age = models.DecimalField(max_digits=2, decimal_places=0)
     activity_level = models.CharField(max_length=30)
-    
+
+class Activity(models.Model):
+    date = models.DateTimeField(default=datetime.now, blank=True)
+    activity = models.CharField(max_length=80)
+    duration = models.IntegerField()#max value soon
+    calories_burned = models.IntegerField()
   
 
 # Authentication in Web requests
