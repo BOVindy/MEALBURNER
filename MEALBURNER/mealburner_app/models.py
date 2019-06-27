@@ -11,13 +11,14 @@ class Meal(models.Model):
 
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length=30)
     firstname = models.CharField(max_length=30)
     lastname = models.CharField(max_length=30)
     weight = models.DecimalField(max_digits=10, decimal_places=2)
     height = models.DecimalField(max_digits=30, decimal_places=2)
     age = models.DecimalField(max_digits=2, decimal_places=0)
     activity_level = models.CharField(max_length=30)
+    password = models.CharField(max_length=30)
 
 class Activity(models.Model):
     date = models.DateTimeField(default=datetime.now, blank=True)
@@ -29,3 +30,4 @@ class Activity(models.Model):
 # Authentication in Web requests
 
 # The login_required decorator
+# user = models.ForeignKey(User, on_delete=models.CASCADE)
