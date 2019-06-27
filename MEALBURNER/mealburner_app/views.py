@@ -71,7 +71,7 @@ def update_meal(request, id):
     }    
 
     return render(request, 'mealburner_app/update_meal.html', context=context)
-        
+     
         
 
 def profile_create(request):
@@ -93,7 +93,8 @@ def profile_create(request):
         user.save()
         
         return redirect('profile')
-    
+        
+        
     return render(request, 'mealburner_app/create_profile.html')
 
 def view_profile(request):
