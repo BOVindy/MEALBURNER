@@ -6,27 +6,57 @@
     <br>
     <div class="wholesomecontainer">
         <a class="btn btn-info" href="{% url 'view' %}">Daily Activities</a>
-        <form class="add_form" action="{% url 'create_activity' %}" method="POST">
+        <form class="add_form" action="{% url 'create_activity' %}" method="POST" novalidate>
             {% csrf_token %}
             <br>
             <br>
             <div class="form-group">
                 <label for="activity">Activity:</label>
-                <input name="activity" type="text" class="form-control" id="activity_input" placeholder="enter the name of the activity here...">
+                <input name="activity" type="text" class="form-control" id="activity_input" placeholder="enter the name of the activity here..." required>
+                <div class="invalid-feedback">
+                    this field is required.
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="duration">Duration:</label>
-                <input name="duration" type="number" class="form-control" id="duration_input" placeholder="enter the duration of your activity here...">
+                <input name="duration" type="number" class="form-control" id="duration_input" placeholder="enter the duration of your activity here..." required>
+                <div class="invalid-feedback">
+                    this field is required.
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="calories_burned">Calories Burned:</label>
-                <input name="calories_burned" type="number" class="form-control" id="calories_burned_input" placeholder="enter the amount of calories that you burned during your activity here...">
+                <input name="calories_burned" type="number" class="form-control" id="calories_burned_input" placeholder="enter the amount of calories that you burned during your activity here..." required>
+                <div class="invalid-feedback">
+                    this field is required.
+                </div>
             </div>
 
             <button type="submit" class="btn btn-success">submit</button>
             
         </form>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('add_form');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
 
 {% endblock content %}
