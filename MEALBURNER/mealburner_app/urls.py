@@ -12,5 +12,5 @@ urlpatterns = [
     path('profile', profile_create, name='profile'),
     path('update_meal/<int:id>', update_meal, name='update_meal'),
     path('update_activity/<int:id>', update_activity, name='update_activity'),
-    path('view_profile', view_profile, name='view_prof')
+    path('view_profile/<int:id>', view_profile, name='view_prof')
 ]
