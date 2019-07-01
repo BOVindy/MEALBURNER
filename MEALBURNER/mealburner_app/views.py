@@ -78,17 +78,20 @@ def profile_create(request):
     if request.method == "POST":
 
         new_profile = Profile()
-        new_profile.user = request.POST["username"]
+        new_profile.username = request.POST["username"]
         new_profile.firstname = request.POST['firstname']
         new_profile.lastname = request.POST['lastname']
         new_profile.weight = request.POST["weight"]
         new_profile.height = request.POST["height"]
         new_profile.age = request.POST["age"]
         new_profile.activity_level = request.POST["activity_level"]
+        calorie_intake_goal = float(request.POST["calorie_intake_goal"])
+        calorie_output_goal = float(request.POST["calorie_output_goal"])
+        regular_exercises = request.POST["activity_level"]
         new_profile.password = request.POST['password']
         
         new_profile.save()
-        user = User.objects.create_user(username=new_profile.user, password=new_profile.password)
+        user = User.objects.create_user(username=new_profile.username, password=new_profile.password)
         user.save()
         
         return redirect('profile')
@@ -104,10 +107,12 @@ def view_profile(request, id):
     print(all_profile)
     for p in all_profile:
         print(p.firstname)
-        if p.firstname == usr.username:
+        if p.username == usr.username:
             my_profile = p
-        else:
-            print("NOPE")
+            break
+    else:
+        print("Didn't Work")
+        my_profile = ""
 
     context = {
         'profile' : my_profile
