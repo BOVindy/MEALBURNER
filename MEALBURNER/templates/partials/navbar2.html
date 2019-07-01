@@ -1,0 +1,51 @@
+  
+       {% if user.is_authenticated %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="http://127.0.0.1:8000/">MEALBURNER</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/">Home</a>
+                </li>
+                <li class='nav-item'>
+                    <a class='nav-link' href= {% url 'view_prof' user.id %}>View Profile</a>
+                </li>
+                <li class='nav-item'>
+                    <a class='nav-link' href= {% url 'view' %}>View Daily Log</a>
+                </li>
+
+                <li class='nav-item'>
+                    <a class='nav-link' href= {% url 'logout' %}>Logout</a>
+                </li>
+                
+            </ul>
+        </div>  
+        </nav>    
+        {% else %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="http://127.0.0.1:8000/">MEALBURNER</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="http://127.0.0.1:8000/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href={% url 'profile' %}>Create Profile</a>
+                </li>    
+            </ul>
+        </div>  
+        </nav>
+
+
+
+        {% endif %}
+   
+
+
+</nav>
