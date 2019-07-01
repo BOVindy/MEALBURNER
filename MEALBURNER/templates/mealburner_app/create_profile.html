@@ -7,7 +7,7 @@
         <form class="add_form" action="{% url 'profile' %}" method="POST">
             {% csrf_token %}
             
-            <a class="btn_back btn btn-dark" href="{% url 'view' %}">Go Back</a>
+            <a class="btn_back btn btn-dark" href='http://127.0.0.1:8000/'>Go Back</a>
             <br>
             <br>
             <div class="form-group">
@@ -37,6 +37,18 @@
             <div class="form-group">
                 <label for="">Activity Level</label>
                 <input name="activity_level" type="text" class='class_form form-control'>
+            </div>
+            <div class='form-group'>
+                <label for=''>Calorie Intake Goal</label>
+                <input name='calorie_intake_goal' type='number' class='price_form form-control'>
+            </div>
+            <div class='form-group'>
+                <label for=''>Calories Burned Goal</label>
+                <input name='calorie_output_goal' type='number' class='price_form form-control'>
+            </div>
+            <div class='form-group'>
+                <label for=''>Regular Exercises</label>
+                <input name='regular_exercises' type='text' class='class_form form-control'>
             </div>
             <div class='form-group'>
                 <label for''>Password</label>

@@ -18,7 +18,11 @@ class Profile(models.Model):
     height = models.DecimalField(max_digits=30, decimal_places=2)
     age = models.DecimalField(max_digits=2, decimal_places=0)
     activity_level = models.CharField(max_length=30)
+    calorie_intake_goal = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    calorie_output_goal = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    regular_exercises = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
+
 
 class Activity(models.Model):
     date = models.DateTimeField(default=datetime.now, blank=True)

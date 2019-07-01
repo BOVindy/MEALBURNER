@@ -1,50 +1,83 @@
-  
-       {% if user.is_authenticated %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="http://127.0.0.1:8000/">MEALBURNER</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1:8000/">Home</a>
-                </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href= {% url 'view_prof' user.id %}>View Profile</a>
-                </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href= {% url 'view' %}>View Meal Log</a>
-                </li>
-                <li class='nav-item'>
-                    <a class='nav-link' href= {% url 'logout' %}>Logout</a>
-                </li>
-                
-            </ul>
-        </div>  
-        </nav>    
-        {% else %}
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="http://127.0.0.1:8000/">MEALBURNER</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="http://127.0.0.1:8000/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href={% url 'profile' %}>Create Profile</a>
-                </li>    
-            </ul>
-        </div>  
-        </nav>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
 
+<html lang="en">
+<head>
+  <title>Navbar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,500i,700,800i" rel="stylesheet">
+</head>
+  <body>
+    {% if user.is_authenticated %}
+    <nav class="navbar navbar-expand-sm   navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        {% endif %}
-   
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class='nav-item'>
+                <a class='nav-link' href="http://127.0.0.1:8000/">MEALBURNER<span class='sr-only'>(current)</span></a>
+            <li class="nav-item">
+              <a class="nav-link" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item dropdown dmenu">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              Our Service
+            </a>
+            <div class="dropdown-menu sm-menu">
+              <a class="dropdown-item" href={% url 'view_prof' user.id %}>View Profile</a>
+              <a class="dropdown-item" href={% url 'view' %}>View Daily Log</a>
+              <a class="dropdown-item" href={% url 'create_meal' %}>Add Meal</a>
+              <a class="dropdown-item" href={% url 'create_activity' %}>Create Activity</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Call</a>
+          </li>
+            <li class="nav-item dropdown dmenu">
+          </li> 
+          </ul>
+          <div class="social-part">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </div>
+        </div>
+    </nav>
+    {% else %}
+    <nav class="navbar navbar-expand-sm   navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class='nav-item'>
+                <a class='nav-link' href="http://127.0.0.1:8000/">MEALBURNER<span class='sr-only'>(current)</span></a>
+            <li class="nav-item">
+            <li class="nav-item">
+              <a class="nav-link" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href={% url 'profile' %}>Create an Account</a>
+            </li> 
+        </div>
+    </nav>    
+    {% endif %}
 
 
-</nav>
+</body>
+</html>
