@@ -1,3 +1,20 @@
+.container-fluid {
+    margin-top: 0px;
+    margin-bottom: 2%;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 1%;
+    background-color: #aed185
+}
+
+div.list_table div.row:nth-of-type(even){
+    background-color: #d2cfac
+}
+
+
+div.list_table div.row:nth-of-type(odd){
+    background-color: #afab6f
+    
 a,
 a:focus,
 a:hover {
@@ -161,4 +178,4 @@ body {
   .cover-container {
     width: 700px;
   }
-}
+  }
