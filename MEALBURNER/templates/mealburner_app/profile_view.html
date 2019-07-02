@@ -31,7 +31,7 @@
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" action = urlhref="#profile" role="tab" aria-controls="profile" aria-selected="false">Nutrition Information</a>
+                                    <a class="nav-link " id="profile-tab" data-toggle="tab" action = url href="#profile" role="tab" aria-controls="profile" aria-selected="false">Nutrition Information</a>
                                 </li>
                             </ul>
                         </div>
@@ -102,50 +102,38 @@
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Experience</label>
+                                                <label>Desired Amount of Calories Consumed</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Expert</p>
+                                                <p>{{ profile.calorie_intake_goal }} calories</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Hourly Rate</label>
+                                                <label>Desired Amount of Calories Burned</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>10$/hr</p>
+                                                <p>{{ profile.calorie_output_goal }} calories</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Total Projects</label>
+                                                <label>Favorite Exercise</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>230</p>
+                                                <p>{{ profile.regular_exercises }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>English Level</label>
+                                                <label>Fitness Goal</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Expert</p>
+                                                <p>{{ profile.fitness_goal }}</p>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Availability</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>6 months</p>
-                                            </div>
-                                        </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Your Bio</label><br/>
-                                        <p>Your detail description</p>
-                                    </div>
-                                </div>
+                                        
+
                             </div>
                         </div>
                     </div>

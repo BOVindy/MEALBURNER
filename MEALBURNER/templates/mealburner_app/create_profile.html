@@ -15,8 +15,8 @@
                 <input name="username" type="text" class="name_form form-control">
             </div>
             <div class="form-group">
-              <label for="">First Name</label>
-              <input name="firstname" type="text" class="class_form form-control">
+                <label for="">First Name</label>
+                <input name="firstname" type="text" class="class_form form-control">
             </div>
             <div class="form-group">
                 <label for="">Last Name</label>
@@ -39,22 +39,33 @@
                 <input name="activity_level" type="text" class='class_form form-control'>
             </div>
             <div class='form-group'>
-                <label for=''>Calorie Intake Goal</label>
-                <input name='calorie_intake_goal' type='number' class='price_form form-control'>
+                <label for="">Calorie Intake Goal</label>
+                <input name="calorie_intake_goal" type='number' step='0.01'class='price_form form-control'>
             </div>
             <div class='form-group'>
-                <label for=''>Calories Burned Goal</label>
-                <input name='calorie_output_goal' type='number' class='price_form form-control'>
+                <label for="">Calories Burned Goal</label>
+                <input name="calorie_output_goal" type='number' step='0.01'class='price_form form-control'>
             </div>
             <div class='form-group'>
-                <label for=''>Regular Exercises</label>
-                <input name='regular_exercises' type='text' class='class_form form-control'>
+                <label for="">Regular Exercises</label>
+                <input name="regular_exercises" type='text' class='class_form form-control'>
+            </div>
+            <div class="form-group">
+                <label for="meal_type">meal type:</label>
+                <select name="meal_type" class="form-control" id="goal_type_input">
+                    <option>Lose Weight</option>
+                    <option>Gain Weight</option>
+                    <option>Maintian Weight</option>
+                    <option>Build Muscle</option>
+                    <option>No Goal</option>
+                </select>
             </div>
             <div class='form-group'>
                 <label for''>Password</label>
                 <input name='password' type=password class='class_form form form-control'>
+            </div>
             <div class="form-group">
-                <input type="submit" class="success_button btn btn-outline-success form_submit ">
+                <input type="submit" class="success_button btn btn-outline-success form_submit"href='http://127.0.0.1:8000/'>
             </div>
         </form>
     </div>
