@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from .models import Meal, Profile, Activity
 from datetime import datetime
+import matplotlib.pyplot as plt
 
 
 
@@ -9,15 +10,25 @@ def index(request):
     return render(request, 'mealburner_app/home.html')
 
 def daily_view(request):
+    usr = User.objects.get(id=id)
+    my_meals = Meal.objects.filter(username=request.user)
+    prof = Profile.objects.filter(username=request.user)
+    for p in prof:
+        if p.username == usr.username:
+            my_meal = p
+            break
+    else:
+        print("Didn't Work")
+        my_meal = ""
 
-    my_meals = Meal.objects.all()
-    my_activities = Activity.objects.all()
+    
+    my_activities = Activity.objects.filter(username=request.user)
 
     total = 0
     total_cal = 0
     total_cal_burn = 0
 
-    for meal in my_meals:
+    for meal in my_meal:
         total_cal += meal.calories
 
     for activity in my_activities:
@@ -26,7 +37,7 @@ def daily_view(request):
     total = total_cal - total_cal_burn
 
     context = {
-        "daily_meals": my_meals,
+        "daily_meals": my_meal,
         "daily_activities": my_activities,
         "total": total,
         "daily_cal": total_cal,
@@ -119,7 +130,7 @@ def view_profile(request, id):
 
     usr = User.objects.get(id=id)
     print(usr)
-    all_profile = Profile.objects.all()
+    all_profile = Profile.objects.filter(username=request.user)
     print(all_profile)
     for p in all_profile:
         print(p.firstname)
@@ -190,5 +201,55 @@ def update_activity(request, id):
     return render(request, 'mealburner_app/update_activity.html', context=context)
 
 
+def daily_view(request):
 
+    my_meals = Meal.objects.all()
+    my_activities = Activity.objects.all()
+
+    total = 0
+    total_cal = 0
+    total_cal_burn = 0
+
+    for meal in my_meals:
+        total_cal += meal.calories
+
+    for activity in my_activities:
+        total_cal_burn += activity.calories_burned
+
+    total = total_cal - total_cal_burn
+
+    context = {
+        "daily_meals": my_meals,
+        "daily_activities": my_activities,
+        "total": total,
+        "daily_cal": total_cal,
+        "daily_cal_burn": total_cal_burn
+
+    }
+#    print(my_meals)
+#    print(my_activities)
+
+    return render(request, "mealburner_app/daily_meals.html", context=context)
+
+def cal_box(request):
+
+    my_meals = Meal.objects.all()
+    my_activities = Activity.objects.all()
+    date = my_meals.date
+    total = 0
+    total_cal = 0
+    total_cal_burned = 0
+
+    for meal in my_meals:
+        total_cal += meal.calories
+    
+    for activity in my_activities:
+        total_cal_burned += activity.calories_burned
+    
+    total = total_cal - total_cal_burn
+    cal_plot = plt.bar(date, total)
+    my_path = "/Users/jschmidt/Desktop/pythonbootcam/projects/MEALBURNER/MEALBURNER/mealburner_app/static/mealburner_app/graphs"
+    plt.savefig(my_path+'/cal_plot.png')
+
+    return render(request, 'mealburner_app/profile_views.html')
 
