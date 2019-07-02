@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index, daily_view, create_meal, delete_meal, delete_activity, profile_create, update_meal, view_profile, create_activity, update_activity
+from .views import index, daily_view, create_meal, delete_meal, delete_activity, profile_create, update_meal, view_profile, create_activity, update_activity, cal_box
 #from . import views
 
 urlpatterns = [
@@ -12,5 +12,6 @@ urlpatterns = [
     path('profile', profile_create, name='profile'),
     path('update_meal/<int:id>', update_meal, name='update_meal'),
     path('update_activity/<int:id>', update_activity, name='update_activity'),
-    path('view_profile/<int:id>', view_profile, name='view_prof')
+    path('view_profile/<int:id>', view_profile, name='view_prof'),
+    path('view_cal_plot', cal_box, name='view_cal')
 ]
