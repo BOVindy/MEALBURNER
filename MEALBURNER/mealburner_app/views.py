@@ -9,36 +9,31 @@ import matplotlib.pyplot as plt
 def index(request):
     return render(request, 'mealburner_app/home.html')
 
-def daily_view(request):
-    usr = User.objects.get(id=id)
-    my_meals = Meal.objects.filter(username=request.user)
-    prof = Profile.objects.filter(username=request.user)
-    for p in prof:
-        if p.username == usr.username:
-            my_meal = p
-            break
-    else:
-        print("Didn't Work")
-        my_meal = ""
+def index2(request):
+    return render(request, 'mealburner_app/about.html')
 
+def daily_view(request):
+    usr = request.user
+    usrs_food = Meal.objects.filter(profile=Profile.objects.get(username=usr))
     
-    my_activities = Activity.objects.filter(username=request.user)
+    # my_activities = Activity.objects.filter(username=request.user)
+    usr_act = Activity.objects.filter(profile=Profile.objects.get(username=usr))
 
     total = 0
     total_cal = 0
     total_cal_burn = 0
 
-    for meal in my_meal:
+    for meal in usrs_food:
         total_cal += meal.calories
 
-    for activity in my_activities:
+    for activity in usr_act:
         total_cal_burn += activity.calories_burned
 
     total = total_cal - total_cal_burn
 
     context = {
-        "daily_meals": my_meal,
-        "daily_activities": my_activities,
+        "daily_meals": usrs_food,
+        "daily_activities": usr_act,
         "total": total,
         "daily_cal": total_cal,
         "daily_cal_burn": total_cal_burn
@@ -54,7 +49,11 @@ def create_meal(request):
 
     if request.method == "POST":
 
+        usr = request.user
         new_meal = Meal()
+
+        new_meal.profile = Profile.objects.get(username=usr)
+
         new_meal.food_name = request.POST["food_name"]
         new_meal.calories = request.POST["calories"]
         new_meal.meal_type = request.POST["meal_type"]
@@ -112,16 +111,17 @@ def profile_create(request):
         new_profile.height = request.POST["height"]
         new_profile.age = request.POST["age"]
         new_profile.activity_level = request.POST["activity_level"]
-        calorie_intake_goal = float(request.POST["calorie_intake_goal"])
-        calorie_output_goal = float(request.POST["calorie_output_goal"])
-        regular_exercises = request.POST["activity_level"]
+        new_profile.calorie_intake_goal = float(request.POST["calorie_intake_goal"])
+        new_profile.calorie_output_goal = float(request.POST["calorie_output_goal"])
+        new_profile.regular_exercises = request.POST["activity_level"]
+        new_profile.fitness_goal = request.POST['fitness_goal']
         new_profile.password = request.POST['password']
         
         new_profile.save()
         user = User.objects.create_user(username=new_profile.username, password=new_profile.password)
         user.save()
         
-        return redirect('profile')
+        return redirect('http://127.0.0.1:8000/')
         
         
     return render(request, 'mealburner_app/create_profile.html')
@@ -155,8 +155,12 @@ def view_profile(request, id):
 def create_activity(request):
 
     if request.method == "POST":
-
+        usr = request.user
         new_activity = Activity()
+
+        new_activity.profile = Profile.objects.get(username=usr)
+
+        
         new_activity.activity = request.POST["activity"]
         new_activity.duration = request.POST["duration"]
         new_activity.calories_burned = request.POST["calories_burned"]
@@ -200,42 +204,21 @@ def update_activity(request, id):
 
     return render(request, 'mealburner_app/update_activity.html', context=context)
 
-
-def daily_view(request):
-
-    my_meals = Meal.objects.all()
-    my_activities = Activity.objects.all()
-
-    total = 0
-    total_cal = 0
-    total_cal_burn = 0
-
-    for meal in my_meals:
-        total_cal += meal.calories
-
-    for activity in my_activities:
-        total_cal_burn += activity.calories_burned
-
-    total = total_cal - total_cal_burn
-
-    context = {
-        "daily_meals": my_meals,
-        "daily_activities": my_activities,
-        "total": total,
-        "daily_cal": total_cal,
-        "daily_cal_burn": total_cal_burn
-
-    }
-#    print(my_meals)
-#    print(my_activities)
-
-    return render(request, "mealburner_app/daily_meals.html", context=context)
-
 def cal_box(request):
+    usr = request.user
+    
+    
+    # my_activities = Activity.objects.filter(username=request.user)
+    
 
-    my_meals = Meal.objects.all()
-    my_activities = Activity.objects.all()
-    date = my_meals.date
+    my_meals = Meal.objects.filter(profile=Project.objects.get(username=usr))
+    my_activities = Activity.objects.filter(profile=Profile.objects.get(username=usr))
+    date_list = []
+    print(my_meals)
+    for i in list(my_meals):
+        print(i)
+
+
     total = 0
     total_cal = 0
     total_cal_burned = 0
@@ -247,7 +230,7 @@ def cal_box(request):
         total_cal_burned += activity.calories_burned
     
     total = total_cal - total_cal_burn
-    cal_plot = plt.bar(date, total)
+    cal_plot = plt.bar(date_list, total)
     my_path = "/Users/jschmidt/Desktop/pythonbootcam/projects/MEALBURNER/MEALBURNER/mealburner_app/static/mealburner_app/graphs"
     plt.savefig(my_path+'/cal_plot.png')
 

@@ -13,21 +13,21 @@
     <div class="cover-container">
 
       <div class="inner cover">
-        <h1 class="cover-heading">Full screen background cover page.</h1>
+        <h1 class="cover-heading">MEALBURNER</h1>
 
         <p class="lead">
             
         {% if user.is_authenticated %}
           Hello {{ user.username }}
-          <p><a href="{% url 'logout' %}">logout</a></p>
+          <a class="btn_back btn btn-dark" href="{% url 'logout' %}">Logout</a>
         {% else %}
-          <p>you are not logged in</p>
-          <a href={% url 'login' %}>login</a>
+          <p>Welcome! Log in or Create an Account</p>
+         <a class="btn_back btn btn-dark" href="{% url 'login' %}">Login</a>
         {% endif %}
             
         </p>
 
-        <p class="lead"><a class="btn btn-lg btn-info" href="#">Learn
+        <p class="lead"><a class="btn btn-lg btn-info" href={% url 'about' %}>Learn
         more</a></p>
       </div>
 

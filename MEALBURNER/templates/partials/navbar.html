@@ -28,11 +28,11 @@
               <a class="nav-link" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href={% url 'about' %}>About</a>
             </li>
             <li class="nav-item dropdown dmenu">
             <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              Our Service
+              Manage Activity
             </a>
             <div class="dropdown-menu sm-menu">
               <a class="dropdown-item" href={% url 'view_prof' user.id %}>View Profile</a>
@@ -42,19 +42,8 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact Us</a>
+            <a class="nav-link" href={% url 'logout' %}>Logout</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Call</a>
-          </li>
-            <li class="nav-item dropdown dmenu">
-          </li> 
-          </ul>
-          <div class="social-part">
-            <i class="fa fa-facebook" aria-hidden="true"></i>
-            <i class="fa fa-twitter" aria-hidden="true"></i>
-            <i class="fa fa-instagram" aria-hidden="true"></i>
-          </div>
         </div>
     </nav>
     {% else %}
@@ -74,6 +63,9 @@
             <li class="nav-item">
               <a class="nav-link" href={% url 'profile' %}>Create an Account</a>
             </li> 
+            <li class='nav-item'>
+              <a class='nav-link' href={% url 'login' %}>Login</a>
+            </li>
         </div>
     </nav>    
     {% endif %}
