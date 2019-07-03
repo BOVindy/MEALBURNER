@@ -31,7 +31,7 @@ body {
   background-size: cover;
   
   height: 100%;
-  background-color: #060;
+  background-color: white;
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
@@ -50,15 +50,47 @@ body {
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
+  
 }
 .cover-container {
   margin-right: auto;
   margin-left: auto;
-}
+  text-align: center;
 
+}
+.cover-heading{
+  font-size: 75px;
+  color: black;
+}
+.btn_back{
+  width:100px;
+  
+}
+.drop1{
+  color:black;
+}
+.nav1{
+  color: black;
+}
+.abt_title{
+  color: white;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  font-size: 80px;
+}
+.form-group{
+  color:white;
+}
+#header_port{
+  color: white;
+  font-size: 60px;
+  margin-left:73px;
+}
 /* Padding for spacing */
 .inner {
   padding: 30px;
+  
 }
 
 

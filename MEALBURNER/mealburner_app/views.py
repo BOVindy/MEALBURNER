@@ -213,7 +213,7 @@ def cal_box(request):
     
     new_list = []
     for i in my_meals:
-        new_list.append(i.date.strftime('%m/%d/%Y %H:%M:%S')) 
+        new_list.append(i.date.strftime('%m/%d/%Y')) 
          
     print(new_list)
     

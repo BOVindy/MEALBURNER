@@ -23,7 +23,8 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class='nav-item'>
-                <a class='nav-link' href="http://127.0.0.1:8000/">MEALBURNER<span class='sr-only'>(current)</span></a>
+                <a class='nav1 nav-link' href="http://127.0.0.1:8000/">MEALBURNER<span class='sr-only'>(current)</span></a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
             </li>
@@ -35,10 +36,11 @@
               Manage Activity
             </a>
             <div class="dropdown-menu sm-menu">
-              <a class="dropdown-item" href={% url 'view_prof' user.id %}>View Profile</a>
-              <a class="dropdown-item" href={% url 'view' %}>View Daily Log</a>
-              <a class="dropdown-item" href={% url 'create_meal' %}>Add Meal</a>
-              <a class="dropdown-item" href={% url 'create_activity' %}>Create Activity</a>
+              <a class="drop1 dropdown-item" href={% url 'view_prof' user.id %}>View Profile</a>
+              <a class="drop2 dropdown-item" href={% url 'view' %}>View Daily Log</a>
+              <a class="drop3 dropdown-item" href={% url 'create_meal' %}>Add Meal</a>
+              <a class="drop4 dropdown-item" href={% url 'create_activity' %}>Create Activity</a>
+              <a class="drop5 dropdown-item" href={% url 'view_cal' %}>Visualize Caloric Intake</a>
             </div>
           </li>
           <li class="nav-item">
@@ -59,6 +61,9 @@
             <li class="nav-item">
             <li class="nav-item">
               <a class="nav-link" href="http://127.0.0.1:8000/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link' href={% url 'about' %}>About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href={% url 'profile' %}>Create an Account</a>

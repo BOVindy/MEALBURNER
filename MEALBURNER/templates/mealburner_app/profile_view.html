@@ -36,9 +36,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -58,6 +55,7 @@
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <br>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Username</label>
@@ -100,9 +98,10 @@
                                         </div>
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <br>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Desired Amount of Calories Consumed</label>
+                                                <label>Daily Desired Amount of Calories Consumed</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>{{ profile.calorie_intake_goal }} calories</p>
@@ -110,7 +109,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Desired Amount of Calories Burned</label>
+                                                <label>Daily Desired Amount of Calories Burned</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p>{{ profile.calorie_output_goal }} calories</p>
@@ -140,6 +139,6 @@
                 </div>
             </form>           
         </div>
-        <img style="width: 50%; height: 50%;" alt="Image description"src="{% static 'mealburner_app/graphs/cal_plot.png' %}"/>
+        
 
 {% endblock content %}

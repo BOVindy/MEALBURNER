@@ -15,18 +15,22 @@
   <div class="site-wrapper-inner">
     <div class="cover-container">
 
-      <div class="inner cover">
+      <div class="innercover">
         <h1 class="cover-heading">MEALBURNER</h1>
-
+        <br>
         <p class="lead">
             
         {% if user.is_authenticated %}
-          Hello {{ user.username }}
+          <h3>Hello {{ user.username }}</h3>
+          <br>
+          <br>
           <a class="btn_back btn btn-dark" href="{% url 'logout' %}">Logout</a>
          
         {% else %}
-          <p>Welcome! Log in or Create an Account</p>
-         <a class="btn_back btn btn-dark" href="{% url 'login' %}">Login</a>
+          <h4>Welcome! Log in or Create an Account</h4>
+          <br>
+          <br>
+          <a class="btn_back btn btn-dark" href="{% url 'login' %}">Login</a>
           {{ form|crispy }}
         {% endif %}
             
@@ -35,7 +39,11 @@
         <p class="lead"><a class="btn btn-lg btn-info" href={% url 'about' %}>Learn
         more</a></p>
       </div>
-
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
       <div class="mastfoot">
         <div class="inner">
           <!-- Validation -->
