@@ -5,10 +5,10 @@
     <div class="container-fluid">
         <br>
         <div class="row">
-            <div class="col-12">Meals eaten on {{ meal.date }}</div>
+            <div class="col-12 text-center">Meals eaten on {{ meal.date }}</div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 text-center">
                 <a href="{% url 'create_meal' %}" class="btn btn-primary add_item">Add a meal</a>
             </div>
         </div>
@@ -96,10 +96,10 @@
         <br>
         <br>
         <div class="row">
-            <div class="col-12">Activities on {{ activity.date }}</div>
+            <div class="col-12 text-center">Activities on {{ activity.date }}</div>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 text-center">
                 <a href="{% url 'create_activity' %}" class="btn btn-primary add_item">Add an activity</a>
             </div>
         </div>
