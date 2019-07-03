@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
 
 {% block content %}
 
@@ -20,9 +23,11 @@
         {% if user.is_authenticated %}
           Hello {{ user.username }}
           <a class="btn_back btn btn-dark" href="{% url 'logout' %}">Logout</a>
+         
         {% else %}
           <p>Welcome! Log in or Create an Account</p>
          <a class="btn_back btn btn-dark" href="{% url 'login' %}">Login</a>
+          {{ form|crispy }}
         {% endif %}
             
         </p>

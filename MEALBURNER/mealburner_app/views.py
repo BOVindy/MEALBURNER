@@ -114,7 +114,7 @@ def profile_create(request):
         new_profile.calorie_intake_goal = float(request.POST["calorie_intake_goal"])
         new_profile.calorie_output_goal = float(request.POST["calorie_output_goal"])
         new_profile.regular_exercises = request.POST["activity_level"]
-        new_profile.fitness_goal = request.POST['fitness_goal']
+        # new_profile.fitness_goal = request.POST.get('fitness_goal')
         new_profile.password = request.POST['password']
         
         new_profile.save()
@@ -206,33 +206,39 @@ def update_activity(request, id):
 
 def cal_box(request):
     usr = request.user
-    
-    
-    # my_activities = Activity.objects.filter(username=request.user)
-    
 
-    my_meals = Meal.objects.filter(profile=Project.objects.get(username=usr))
+    my_meals = Meal.objects.filter(profile=Profile.objects.get(username=usr))
+    
     my_activities = Activity.objects.filter(profile=Profile.objects.get(username=usr))
-    date_list = []
-    print(my_meals)
-    for i in list(my_meals):
-        print(i)
-
-
+    
+    new_list = []
+    for i in my_meals:
+        new_list.append(i.date.strftime('%m/%d/%Y %H:%M:%S')) 
+         
+    print(new_list)
+    
     total = 0
+
     total_cal = 0
-    total_cal_burned = 0
+
+    total_cal_burn = 0
 
     for meal in my_meals:
         total_cal += meal.calories
     
     for activity in my_activities:
-        total_cal_burned += activity.calories_burned
+        total_cal_burn += activity.calories_burned
     
     total = total_cal - total_cal_burn
-    cal_plot = plt.bar(date_list, total)
+    
+    cal_plot = plt.bar(new_list, total)
+    
     my_path = "/Users/jschmidt/Desktop/pythonbootcam/projects/MEALBURNER/MEALBURNER/mealburner_app/static/mealburner_app/graphs"
+    
+    plt.xlabel('Date')
+    plt.ylabel('Total Calories')
     plt.savefig(my_path+'/cal_plot.png')
+    
 
-    return render(request, 'mealburner_app/profile_views.html')
+    return render(request, 'mealburner_app/plots.html')
 
