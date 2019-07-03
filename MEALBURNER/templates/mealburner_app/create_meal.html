@@ -19,6 +19,21 @@
                 <label for="calories">calories:</label>
                 <input name="calories" type="number" class="form-control" id="calories_input" placeholder="enter amount of calories that you ate here...">
             </div>
+            
+            <div class="form-group">
+                <label for="protein">protein:</label>
+                <input name="protien" type="number" class="form-control" id="protein_input" value="{{ meal.protein }}">
+            </div>
+
+            <div class="form-group">
+                <label for="carbohydrates">carbohydrates:</label>
+                <input name="carbohydrates" type="number" class="form-control" id="carbohydrates_input" value="{{ meal.carbohydrates }}">
+            </div>
+
+            <div class="form-group">
+                <label for="fats">fats:</label>
+                <input name="fats" type="number" class="form-control" id="fats_input" value="{{ meal.fats }}">
+            </div>
 
             <div class="form-group">
                 <label for="meal_type">meal type:</label>

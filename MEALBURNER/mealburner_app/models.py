@@ -27,6 +27,9 @@ class Meal(models.Model):
     food_name = models.CharField(max_length=30)
     calories = models.DecimalField(max_digits=10, decimal_places=2)
     meal_type = models.CharField(max_length=30)
+    protein = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    carbohydrates = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    fats = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     date = models.DateTimeField(default=datetime.now, blank=True)
     
     def __str__(self):
