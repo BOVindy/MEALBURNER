@@ -57,6 +57,9 @@ def create_meal(request):
         new_meal.food_name = request.POST["food_name"]
         new_meal.calories = request.POST["calories"]
         new_meal.meal_type = request.POST["meal_type"]
+        new_meal.protein = request.POST['protein']
+        new_meal.carbohydrates = request.POST['carbohydrates']
+        new_meal.fats = request.POST['fats']
 
         new_meal.save()
 
@@ -231,12 +234,13 @@ def cal_box(request):
     
     total = total_cal - total_cal_burn
     
-    cal_plot = plt.bar(new_list, total)
+    cal_plot = plt.bar(new_list, total, color='#688087', linewidth=0)
     
     my_path = "/Users/jschmidt/Desktop/pythonbootcam/projects/MEALBURNER/MEALBURNER/mealburner_app/static/mealburner_app/graphs"
     
     plt.xlabel('Date')
     plt.ylabel('Total Calories')
+    plt.title('Total Calories Consumed Per Day')
     plt.savefig(my_path+'/cal_plot.png')
     
 
