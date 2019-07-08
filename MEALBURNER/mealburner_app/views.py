@@ -53,6 +53,20 @@ def daily_view(request):
     recommended_carb = int(user_weight) * .5
 
     recommended_fat = int(user_weight) * .27
+    if total_protein < recommended_protein:
+        protein_needed = int(recommended_protein) - int(total_protein)
+    else:
+        protein_needed = 0
+
+    if total_carbs < recommended_carb:
+        carbs_needed = int(recommended_carb) - int(total_carbs)
+    else: 
+        carbs_needed = 0
+
+    if total_fats < recommended_fat:
+        fats_needed = int(recommended_fat) - int(total_fats)
+    else:
+        fats_needed = 0
 
     context = {
         "daily_meals": usrs_food,
@@ -65,12 +79,14 @@ def daily_view(request):
         "daily_fats" : total_fats,
         "recommended_protein" : recommended_protein,
         "recommended_carbs" : recommended_carb,
-        "recommended_fat" : recommended_fat
+        "recommended_fat" : recommended_fat,
+        "protein_needed" : protein_needed, 
+        "carbs_needed" : carbs_needed,
+        "fats_needed" : fats_needed
     }
-#    print(my_meals)
-#    print(my_activities)
 
-    return render(request, "mealburner_app/daily_meals.html", context=context)
+
+    return render(request, "mealburner_app/daily_meals2.html", context=context)
 
 
 def create_meal(request):
@@ -145,7 +161,7 @@ def profile_create(request):
         new_profile.activity_level = request.POST["activity_level"]
         new_profile.calorie_intake_goal = float(request.POST["calorie_intake_goal"])
         new_profile.calorie_output_goal = float(request.POST["calorie_output_goal"])
-        new_profile.regular_exercises = request.POST["activity_level"]
+        new_profile.regular_exercises = request.POST["regular_exercises"]
         new_profile.fitness_goal = request.POST['fitness_goal']
         new_profile.password = request.POST['password']
         
@@ -265,7 +281,7 @@ def cal_box(request):
     
     cal_plot = plt.bar(new_list, total, color='#688087', linewidth=0)
     
-    my_path = "/Users/jschmidt/Desktop/pythonbootcam/projects/MEALBURNER/MEALBURNER/mealburner_app/static/mealburner_app/graphs"
+    my_path = "/Users/jschmidt/Desktop/pythonbootcam/projects/MEALBURNER/MEALBURNER/mealburner_app/static/mealburner_app/graph1"
     
     plt.xlabel('Date')
     plt.ylabel('Total Calories')
@@ -274,4 +290,124 @@ def cal_box(request):
     
 
     return render(request, 'mealburner_app/plots.html')
+
+def individual_meal_view(request, id):
+    usr = request.user
+    
+    usrs_food = Meal.objects.filter(profile=Profile.objects.get(username=usr))
+    
+    usr_stats = Profile.objects.filter(username=request.user)
+    
+    meal_to_view = Meal.objects.get(id=id)
+
+    m_d = Meal.objects.filter(date=meal_to_view.date)
+
+    total_protein = 0
+    total_carbs = 0
+    total_fats = 0
+    
+    for meal in m_d:
+        total_protein += meal.protein
+    
+    for meal in m_d:
+        total_carbs += meal.carbohydrates
+    
+    for meal in m_d:
+        total_fats += meal.fats
+
+    for profile in usr_stats:
+        user_weight = profile.weight
+
+
+    recommended_protein = int(user_weight) * .8
+    
+    recommended_carb = int(user_weight) * .5
+
+    recommended_fat = int(user_weight) * .27
+    
+    if total_protein < recommended_protein:
+        protein_needed = int(recommended_protein) - int(total_protein)
+    else:
+        protein_needed = 0
+
+    if total_carbs < recommended_carb:
+        carbs_needed = int(recommended_carb) - int(total_carbs)
+    else: 
+        carbs_needed = 0
+
+    if total_fats < recommended_fat:
+        fats_needed = int(recommended_fat) - int(total_fats)
+    else:
+        fats_needed = 0
+    
+    
+
+    context = {
+        'meal' : m_d,
+        "daily_protein" : total_protein,
+        "daily_carbs" : total_carbs,
+        "daily_fats" : total_fats,
+        "recommended_protein" : recommended_protein,
+        "recommended_carbs" : recommended_carb,
+        "recommended_fat" : recommended_fat,
+        "protein_needed" : protein_needed, 
+        "carbs_needed" : carbs_needed,
+        "fats_needed" : fats_needed
+    }
+
+    return render(request, 'mealburner_app/meal_act_view.html', context=context)
+
+def individual_act_view(request, id):
+    
+    activity_to_view = Activity.objects.get(id=id)
+
+    a_d = Activity.objects.filter(date=activity_to_view.date)
+
+    context = {
+        'activity' : a_d
+    }
+
+    return render(request, 'mealburner_app/meal_act_view.html', context=context)
+
+def pie_chart(request, id):
+    usr = request.user
+
+    usrs_food = Meal.objects.filter(profile=Profile.objects.get(username=usr))
+    
+    usr_stats = Profile.objects.filter(username=request.user)
+    
+    meal_to_view = Meal.objects.get(id=id)
+
+    m_d = Meal.objects.filter(date=meal_to_view.date)
+
+    total_protein = 0
+    total_carbs = 0
+    total_fats = 0
+    
+    for meal in m_d:
+        total_protein += meal.protein
+    
+    for meal in m_d:
+        total_carbs += meal.carbohydrates
+    
+    for meal in m_d:
+        total_fats += meal.fats
+     
+    
+    my_path = "/Users/jschmidt/Desktop/pythonbootcam/projects/MEALBURNER/MEALBURNER/mealburner_app/static/mealburner_app/graph2"
+    
+    context = {
+        'meal' : m_d,
+        'daily_protein' : total_protein,
+        'daily_carbs' : total_carbs,
+        'daily_fats' : total_fats
+    }
+    nutrient_list = [int(total_protein), int(total_carbs), int(total_fats)]
+    print(nutrient_list)
+    
+    pie_chart = plt.pie(nutrient_list)
+    
+    plt.savefig(my_path+'/pie_chart.png')
+
+    return render(request, 'mealburner_app/plots2.html')
 

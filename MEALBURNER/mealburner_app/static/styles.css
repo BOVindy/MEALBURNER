@@ -215,4 +215,7 @@ div.list_table div.row:nth-of-type(odd){
 }
 .login_card_box{
   background-color: #aed185
+.alert{
+  width:300px;
+  margin-left: 895px;
 }
