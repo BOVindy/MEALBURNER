@@ -34,7 +34,7 @@ class Meal(models.Model):
     
     def __str__(self):
         return f"{self.profile}'s meal'"
-
+# default for date could be datetime now, and users could enter in a date of their own
 class Activity(models.Model):
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
     date = models.DateTimeField(default=datetime.now, blank=True)

@@ -15,7 +15,7 @@ def index2(request):
 def daily_view(request):
     usr = request.user
     usrs_food = Meal.objects.filter(profile=Profile.objects.get(username=usr))
-    
+    usr_stats = Profile.objects.filter(username=request.user)
     # my_activities = Activity.objects.filter(username=request.user)
     usr_act = Activity.objects.filter(profile=Profile.objects.get(username=usr))
 
@@ -31,13 +31,41 @@ def daily_view(request):
 
     total = total_cal - total_cal_burn
 
+    total_protein = 0
+    total_carbs = 0
+    total_fats = 0
+    
+    for meal in usrs_food:
+        total_protein += meal.protein
+    
+    for meal in usrs_food:
+        total_carbs += meal.carbohydrates
+    
+    for meal in usrs_food:
+        total_fats += meal.fats
+
+    for profile in usr_stats:
+        user_weight = profile.weight
+
+
+    recommended_protein = int(user_weight) * .8
+    
+    recommended_carb = int(user_weight) * .5
+
+    recommended_fat = int(user_weight) * .27
+
     context = {
         "daily_meals": usrs_food,
         "daily_activities": usr_act,
         "total": total,
         "daily_cal": total_cal,
-        "daily_cal_burn": total_cal_burn
-
+        "daily_cal_burn": total_cal_burn,
+        "daily_protein" : total_protein,
+        "daily_carbs" : total_carbs,
+        "daily_fats" : total_fats,
+        "recommended_protein" : recommended_protein,
+        "recommended_carbs" : recommended_carb,
+        "recommended_fat" : recommended_fat
     }
 #    print(my_meals)
 #    print(my_activities)
@@ -57,16 +85,17 @@ def create_meal(request):
         new_meal.food_name = request.POST["food_name"]
         new_meal.calories = request.POST["calories"]
         new_meal.meal_type = request.POST["meal_type"]
-        new_meal.protein = request.POST['protein']
-        new_meal.carbohydrates = request.POST['carbohydrates']
-        new_meal.fats = request.POST['fats']
+        new_meal.protein = request.POST["protein"]
+        new_meal.carbohydrates = request.POST["carbohydrates"]
+        new_meal.fats = request.POST["fats"]
+        new_meal.date = request.POST["date"]
 
         new_meal.save()
 
         return redirect("view")
 
     return render(request, "mealburner_app/create_meal.html")
-
+#added date to here, need to work on it
 
 def delete_meal(request):
 
@@ -117,7 +146,7 @@ def profile_create(request):
         new_profile.calorie_intake_goal = float(request.POST["calorie_intake_goal"])
         new_profile.calorie_output_goal = float(request.POST["calorie_output_goal"])
         new_profile.regular_exercises = request.POST["activity_level"]
-        # new_profile.fitness_goal = request.POST.get('fitness_goal')
+        new_profile.fitness_goal = request.POST['fitness_goal']
         new_profile.password = request.POST['password']
         
         new_profile.save()
