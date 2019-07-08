@@ -202,7 +202,7 @@ body {
     margin-left: 0px;
     margin-right: 0px;
     padding: 1%;
-    background-color: #aed185
+    background-color: #aed1850e
 }
 
 div.list_table div.row:nth-of-type(even){
@@ -212,3 +212,7 @@ div.list_table div.row:nth-of-type(even){
 
 div.list_table div.row:nth-of-type(odd){
     background-color: #afab6f
+}
+.login_card_box{
+  background-color: #aed185
+}
