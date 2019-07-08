@@ -21,19 +21,25 @@
             </div>
             
             <div class="form-group">
-                <label for="protein">protein:</label>
-                <input name="protien" type="number" class="form-control" id="protein_input" value="{{ meal.protein }}">
+                <label for="">protein:</label>
+                <input name="protein" type="number" class="form-control" id="protein_input" >
             </div>
 
             <div class="form-group">
                 <label for="carbohydrates">carbohydrates:</label>
-                <input name="carbohydrates" type="number" class="form-control" id="carbohydrates_input" value="{{ meal.carbohydrates }}">
+                <input name="carbohydrates" type="number" class="form-control" id="carbohydrates_input" >
             </div>
 
             <div class="form-group">
                 <label for="fats">fats:</label>
-                <input name="fats" type="number" class="form-control" id="fats_input" value="{{ meal.fats }}">
+                <input name="fats" type="number" class="form-control" id="fats_input" >
             </div>
+
+            <div class="form-group">
+                <label for='date'>date:</label>
+                <input name='date' type="date" class="form-control" id='date_input'>
+            </div>
+            {% comment %} added date to here, need to work on it {% endcomment %}
 
             <div class="form-group">
                 <label for="meal_type">meal type:</label>
