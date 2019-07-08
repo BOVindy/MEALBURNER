@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% if daily_protein < recommended_protein %}
+    <div class="alert alert-secondary" role="alert">
+        A simple secondary alert—check it out!
+    </div>
+{% else %}
+    <p>You have hit your daily protein</p>
+{% endif %}
     <div class="container-fluid">
         <br>
         <div class="row">
@@ -211,4 +217,6 @@
     </div>
     <br><br><br><br><br>
 ################
+
+
 {% endblock content %}
