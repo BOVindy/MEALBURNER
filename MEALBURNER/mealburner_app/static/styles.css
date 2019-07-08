@@ -212,3 +212,8 @@ div.list_table div.row:nth-of-type(even){
 
 div.list_table div.row:nth-of-type(odd){
     background-color: #afab6f
+}
+.alert{
+  width:300px;
+  margin-left: 895px;
+}
