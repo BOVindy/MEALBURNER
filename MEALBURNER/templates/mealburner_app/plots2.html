@@ -2,12 +2,6 @@
 {% load static %}
 {% block content %}
 
-
-{% if meal %}
-    {% for item in meal %}
-        <form class="add_form" action="{% url 'pie_chart' item.id %}" method="POST">
-        <img style="width: 50%; height: 50%;" alt="Image description"src="{% static 'mealburner_app/graph2/pie_chart.png' %}"/>
-    {% endfor %}
-{% endif %} 
+<img style="width: 50%; height: 50%;" alt="Image description"src="{% static 'mealburner_app/graphs/pie_chart.png' %}"/>
 
 {% endblock %}

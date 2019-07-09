@@ -5,7 +5,7 @@
     <br>
     <br>
     <div class="wholesomecontainer">
-        <a class="btn btn-info" href="{% url 'view' %}">Daily Activities</a>
+        <a class="btn btn-info" href="{% url 'view' %}">Activity and Meal History</a>
         <form class="add_form" action="{% url 'create_activity' %}" method="POST" novalidate>
             {% csrf_token %}
             <br>
@@ -39,7 +39,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-success">submit</button>
+            <button type="submit" id='act_submit'class="btn btn-success">submit</button>
             
         </form>
 

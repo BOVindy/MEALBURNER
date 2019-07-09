@@ -16,27 +16,29 @@
     <div class="cover-container">
 
       <div class="innercover">
-        <h1 class="cover-heading">MEALBURNER</h1>
+        <div id="header_main">
+        <a class='main_head' href="/"id="logo_main">MEALBURNER</a>
+        </div
         <br>
         <p class="lead">
             
         {% if user.is_authenticated %}
-          <h3>Hello {{ user.username }}</h3>
+          <h3 id='welcome_user'>Hello {{ user.username }}</h3>
           <br>
           <br>
-          <a class="btn_back btn btn-dark" href="{% url 'logout' %}">Logout</a>
+          <a class="btn_back btn btn-dark" id="login_out" href="{% url 'logout' %}">Logout</a>
          
         {% else %}
           <h4>Welcome! Log in or Create an Account</h4>
           <br>
           <br>
-          <a class="btn_back btn btn-dark" href="{% url 'login' %}">Login</a>
+          <a class="btn_back btn btn-dark" id="login_out" href="{% url 'login' %}">Login</a>
           {{ form|crispy }}
         {% endif %}
             
         </p>
 
-        <p class="lead"><a class="btn btn-lg btn-info" href={% url 'about' %}>Learn
+        <p class="lead"><a class="btn btn-lg btn-info" id="learn_more" href={% url 'about' %}>Learn
         more</a></p>
       </div>
       <br>

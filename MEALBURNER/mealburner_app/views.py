@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from .models import Meal, Profile, Activity
 from datetime import datetime
 import matplotlib.pyplot as plt
+import os
 
 
 
@@ -212,7 +213,7 @@ def create_activity(request):
         new_activity.activity = request.POST["activity"]
         new_activity.duration = request.POST["duration"]
         new_activity.calories_burned = request.POST["calories_burned"]
-
+        new_activity.date = request.POST["date"]
         new_activity.save()
 
         return redirect("view")
@@ -281,13 +282,12 @@ def cal_box(request):
     
     cal_plot = plt.bar(new_list, total, color='#688087', linewidth=0)
     
-    my_path = "/Users/jschmidt/Desktop/pythonbootcam/projects/MEALBURNER/MEALBURNER/mealburner_app/static/mealburner_app/graph1"
     
     plt.xlabel('Date')
     plt.ylabel('Total Calories')
     plt.title('Total Calories Consumed Per Day')
-    plt.savefig(my_path+'/cal_plot.png')
-    
+    plt.savefig(os.getcwd() + '/mealburner_app/static/mealburner_app/graphs/cal_plot.png')
+    plt.close()
 
     return render(request, 'mealburner_app/plots.html')
 
@@ -392,10 +392,7 @@ def pie_chart(request, id):
     
     for meal in m_d:
         total_fats += meal.fats
-     
-    
-    my_path = "/Users/jschmidt/Desktop/pythonbootcam/projects/MEALBURNER/MEALBURNER/mealburner_app/static/mealburner_app/graph2"
-    
+         
     context = {
         'meal' : m_d,
         'daily_protein' : total_protein,
@@ -405,9 +402,14 @@ def pie_chart(request, id):
     nutrient_list = [int(total_protein), int(total_carbs), int(total_fats)]
     print(nutrient_list)
     
-    pie_chart = plt.pie(nutrient_list)
-    
-    plt.savefig(my_path+'/pie_chart.png')
+    sizes = [15, 30, 45, 10]
+    explode = (0.1, 0.1, 0.1)
+    labels = ['protein', 'carbs', 'fats']
+
+    pie_chart = plt.pie(nutrient_list, explode=explode, labels= labels, shadow=True, autopct='%1.1f%%')
+    print(os.getcwd())
+    plt.savefig(os.getcwd() + '/mealburner_app/static/mealburner_app/graphs/pie_chart.png')
+    plt.close()
 
     return render(request, 'mealburner_app/plots2.html')
 

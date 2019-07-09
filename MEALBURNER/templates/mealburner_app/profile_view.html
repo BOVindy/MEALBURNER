@@ -3,10 +3,12 @@
 {% block content %}
 <br>
 <br>
-<h1 id='header_port' class='table_heading'>Your Profile</h1>
+<div id="header">
+        <a id="logo_profile">{{ user.username }}'s Profile</a>
+</div>
 <br>
 <br>
-<div class="container emp-profile">
+<div id='main_prof'class="container emp-profile">
             <form method="post">
                 <div class="row">
                     <div class="col-md-4">
@@ -21,7 +23,7 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        <p><h1>{{ profile.firstname }}</h1> <h1>{{ profile.lastname }}</h1></p>
+                                        <p id='first_last'>{{ profile.firstname }}</p> <p id='first_last'>{{ profile.lastname }}</p>
                                     </h5>
                                     <h6>
                                         
@@ -41,9 +43,14 @@
                     <div class="col-md-4">
                         <div class="profile-work">
                             <p></p>
-                            <a href=""></a><br/>
-                            <a href=""></a><br/>
-                            <a href=""></a>
+                            <a class="btn btn-light" href="{% url 'view' %}">Activity and Meal History</a><br>
+                            <br>
+                            <a class="btn btn-light" href="{% url 'create_meal' %}">Create a Meal</a><br>
+                            <br>
+                            <a class="btn btn-light" href="{% url 'create_activity' %}">Create an Acitvity</a><br>
+                            <br>
+                            <a class="btn btn-light" href="{% url 'view_cal' %}">View your Calories per Day</a><br>
+                            <br>
                             <p></p>
                             <a href=""></a><br/>
                             <a href=""></a><br/>
@@ -58,42 +65,42 @@
                                         <br>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Username</label>
+                                                <label id='user_stat'>Username</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ user.username }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Weight</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{ profile.weight }} lbs</p>
+                                                <p id='user_stat'>{{ user.username }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Height</label>
+                                                <label id='user_stat'>Weight</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ profile.height }}</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Age</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{ profile.age }} years old</p>
+                                                <p id='user_stat'>{{ profile.weight }} lbs</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Activity Level</label>
+                                                <label id='user_stat'>Height</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ profile.activity_level }}</p>
+                                                <p id='user_stat'>{{ profile.height }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label id='user_stat'>Age</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p id='user_stat'>{{ profile.age }} years old</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label id='user_stat'>Activity Level</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p id='user_stat'>{{ profile.activity_level }}</p>
                                             </div>
                                         </div>
                             </div>
@@ -101,34 +108,38 @@
                                         <br>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Daily Desired Amount of Calories Consumed</label>
+                                                <label id='user_stat2'>Daily Desired Amount of Calories Consumed</label>
                                             </div>
+                                            <br>
                                             <div class="col-md-6">
-                                                <p>{{ profile.calorie_intake_goal }} calories</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Daily Desired Amount of Calories Burned</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>{{ profile.calorie_output_goal }} calories</p>
+                                                <p id='user_stat2'>{{ profile.calorie_intake_goal }} calories</p>
                                             </div>
                                         </div>
+                                        <br>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Favorite Exercise</label>
+                                                <label id='user_stat2'>Daily Desired Amount of Calories Burned</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ profile.regular_exercises }}</p>
+                                                <p id='user_stat2'>{{ profile.calorie_output_goal }} calories</p>
                                             </div>
                                         </div>
+                                        <br>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Fitness Goal</label>
+                                                <label id='user_stat2'>Favorite Exercise</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ profile.fitness_goal }}</p>
+                                                <p id='user_stat2'>{{ profile.regular_exercises }}</p>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label id='user_stat2'>Fitness Goal</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p id='user_stat2'>{{ profile.fitness_goal }}</p>
                                             </div>
                                         </div>
                                         
