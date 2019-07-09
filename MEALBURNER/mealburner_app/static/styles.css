@@ -1,4 +1,5 @@
-
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
+@import url(https://fonts.googleapis.com/css?family=Squada+One);
 
 a,
 a:focus,
@@ -71,6 +72,7 @@ body {
 }
 .nav1{
   color: black;
+  font-weight: bold;
 }
 .abt_title{
   color: white;
@@ -214,6 +216,169 @@ div.list_table div.row:nth-of-type(odd){
     background-color: #afab6f
 }
 .alert{
-  width:300px;
-  margin-left: 895px;
+  width: 300px;
+  text-align: center;
+  margin-left: 800px;
+  align-content: left;
 }
+#logo {
+  font-family: 'Open Sans', sans-serif;
+  color: #f4f6f8;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 50px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+  text-shadow: black 3px 2px 0;
+  position: relative;
+  margin-left: 80px;
+}
+#logo:after {
+  content:"Prakash";
+  position: absolute;
+  left: 8px;
+  top: 32px;
+}
+#logo:after {
+  /*background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;*/
+  background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
+  background-size: 4px 4px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: -5;
+  display: block;
+  text-shadow: none;
+}
+.Portfolio1{
+  width:1000px;
+}
+.Port2{
+  width:1020px;
+}
+.container_add{
+  width:50px;
+}
+
+#logo_main {
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 100px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+  text-shadow: #EDEDED 3px 2px 0;
+  position: relative;
+}
+#logo_main:after {
+  content:"Prakash";
+  position: absolute;
+  left: 8px;
+  top: 32px;
+}
+#logo_main:after {
+  /*background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;*/
+  background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
+  background-size: 4px 4px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: -5;
+  display: block;
+  text-shadow: none;
+}
+#welcome_user{
+  font-weight: bold;
+  color: black;
+  text-shadow: grey 2px 2px 0;
+}
+#login_out{
+  width:200px;
+}
+#learn_more{
+  height: 45px;
+  width: 150px;
+}
+#logo_about {
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 100px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+  text-shadow: #EDEDED 3px 2px 0;
+  position: relative;
+}
+#logo_about:after {
+  content:"Prakash";
+  position: absolute;
+  left: 8px;
+  top: 32px;
+}
+#logo_about:after {
+  /*background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;*/
+  background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
+  background-size: 4px 4px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: -5;
+  display: block;
+  text-shadow: none;
+}
+/* .wholesomecontainer{
+  width:1100px;
+  text-align: left;
+} */
+#meal_submit{
+  width:300px;
+  margin-left: 800px;
+}
+#act_submit{
+  width:300px;
+  margin-left: 800px;
+}
+#first_last{
+  font-size: 50px;
+}
+#user_stat{
+  font-size: 40px;
+}
+#user_stat2{
+  font-size:30px;
+}
+#logo_profile {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 50px;
+  font-weight: 800;
+  letter-spacing: -3px;
+  line-height: 1;
+  text-shadow: black 3px 2px 0;
+  position: relative;
+  margin-left: 80px;
+}
+#logo_profile:after {
+  content:"Prakash";
+  position: absolute;
+  left: 8px;
+  top: 32px;
+}
+#logo_profile:after {
+  /*background: url(https://subtlepatterns.com/patterns/crossed_stripes.png) repeat;*/
+  background-image: -webkit-linear-gradient(left top, transparent 0%, transparent 25%, #555 25%, #555 50%, transparent 50%, transparent 75%, #555 75%);
+  background-size: 4px 4px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: -5;
+  display: block;
+  text-shadow: none;
+}
+#col_head{
+  width:500px;
+}
+

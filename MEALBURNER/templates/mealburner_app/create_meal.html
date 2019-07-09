@@ -5,56 +5,56 @@
     <br>
     <br>
     <div class="wholesomecontainer">
-        <a class="btn btn-info" href="{% url 'view' %}">Daily Meals</a>
+        <a class="btn btn-info" href="{% url 'view' %}">Activity and Meal History</a>
         <form class="add_form" action="{% url 'create_meal' %}" method="POST">
             {% csrf_token %}
             <br>
             <br>
             <div class="form-group">
-                <label for="food_name">food name:</label>
+                <label for="food_name">Food name:</label>
                 <input name="food_name" type="text" class="form-control" id="food_name_input" placeholder="enter the name of the food you had here...">
             </div>
 
             <div class="form-group">
-                <label for="calories">calories:</label>
+                <label for="calories">Calories:</label>
                 <input name="calories" type="number" class="form-control" id="calories_input" placeholder="enter amount of calories that you ate here...">
             </div>
             
             <div class="form-group">
-                <label for="">protein:</label>
+                <label for="">Protein:</label>
                 <input name="protein" type="number" class="form-control" id="protein_input" >
             </div>
 
             <div class="form-group">
-                <label for="carbohydrates">carbohydrates:</label>
+                <label for="carbohydrates">Carbohydrates:</label>
                 <input name="carbohydrates" type="number" class="form-control" id="carbohydrates_input" >
             </div>
 
             <div class="form-group">
-                <label for="fats">fats:</label>
+                <label for="fats">Fats:</label>
                 <input name="fats" type="number" class="form-control" id="fats_input" >
             </div>
 
             <div class="form-group">
-                <label for='date'>date:</label>
+                <label for='date'>Date:</label>
                 <input name='date' type="date: Y-m-d" class="form-control" id='date_input' placeholder='YYYY-mm-dd'>
             </div>
             {% comment %} added date to here, need to work on it {% endcomment %}
 
             <div class="form-group">
-                <label for="meal_type">meal type:</label>
+                <label for="meal_type">Meal Type:</label>
                 <select name="meal_type" class="form-control" id="meal_type_input">
-                    <option>breakfast</option>
-                    <option>brunch</option>
-                    <option>lunch</option>
-                    <option>dinner</option>
-                    <option>snack</option>
+                    <option>Breakfast</option>
+                    <option>Brunch</option>
+                    <option>Lunch</option>
+                    <option>Dinner</option>
+                    <option>Snack</option>
                 </select>
             </div>
 
-
-            <button type="submit" class="btn btn-success">submit</button>
-            
+            <br>
+            <button type="submit" id='meal_submit'class="btn btn-success">Submit</button>
+            <br>
         </form>
-
+<br>
 {% endblock content %}
