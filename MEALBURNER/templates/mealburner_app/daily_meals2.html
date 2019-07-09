@@ -43,7 +43,7 @@
                         {% csrf_token %}
                         <input type="hidden" name="id" value="{{ item.id }}">
                         <input type="hidden" name="update" value=True>
-                        <input class="td_button btn btn-success" type="submit" value="Update Meal">
+                        <input class="td_button btn btn-dark" type="submit" value="Update Meal">
                     </a>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                         {% csrf_token %}
                         <input type="hidden" name="id" value="{{ item.id }}">
                         <input type="hidden" name="delete_activity" value=True>
-                        <input class="td_button btn btn-success" type="submit" value="Delete meal">
+                        <input class="td_button btn btn-dark" type="submit" value="Delete meal">
                     </form>
                 </div>
             </td>
@@ -65,7 +65,7 @@
                             {% csrf_token %}
                             <input type="hidden" name="id" value="{{ item.id }}">
                             <input type="hidden" name="individual_meal_view" value=True>
-                            <input class="td_button btn btn-success" type="submit" value="Meal">
+                            <input class="td_button btn btn-dark" type="submit" value="Meal">
                         </a>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                     {% csrf_token %}
                     <input type="hidden" name="id" value="{{ item.id }}">
                     <input type="hidden" name="update" value=True>
-                    <input class="td_button btn btn-success" type="submit" value="Update Activity">
+                    <input class="td_button btn btn-dark" type="submit" value="Update Activity">
                 </a>
             </div>
         </div>
@@ -135,7 +135,7 @@
                     {% csrf_token %}
                     <input type="hidden" name="id" value="{{ item.id }}">
                     <input type="hidden" name="delete_activity" value=True>
-                    <input class="td_button btn btn-success" type="submit" value="Delete activity">
+                    <input class="td_button btn btn-dark" type="submit" value="Delete activity">
                 </form>
             </div>
         </td>
@@ -146,7 +146,7 @@
                         {% csrf_token %}
                         <input type="hidden" name="id" value="{{ item.id }}">
                         <input type="hidden" name="individual_act_view" value=True>
-                        <input class="td_button btn btn-success" type="submit" value="Meal">
+                        <input class="td_button btn btn-dark" type="submit" value="Actvitiy">
                     </a>
                 </div>
             </div>

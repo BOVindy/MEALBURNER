@@ -232,6 +232,7 @@ div.list_table div.row:nth-of-type(odd){
   line-height: 1;
   text-shadow: black 3px 2px 0;
   position: relative;
+  margin-left: 80px;
 }
 #logo:after {
   content:"Prakash";
@@ -296,7 +297,7 @@ div.list_table div.row:nth-of-type(odd){
   width:200px;
 }
 #learn_more{
-  height: 50px;
+  height: 45px;
   width: 150px;
 }
 #logo_about {
@@ -359,6 +360,7 @@ div.list_table div.row:nth-of-type(odd){
   line-height: 1;
   text-shadow: black 3px 2px 0;
   position: relative;
+  margin-left: 80px;
 }
 #logo_profile:after {
   content:"Prakash";
