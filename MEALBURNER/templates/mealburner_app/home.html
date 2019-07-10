@@ -32,6 +32,8 @@
           <h4 id='welcome_user'>Welcome! Log in or Create an Account</h4>
           <br>
           <br>
+          <a class="btn_back btn btn-dark" id="create_acct" href="{% url 'profile' %}">Create an Account</a><br>
+          <br>
           <a class="btn_back btn btn-dark" id="login_out" href="{% url 'login' %}">Login</a>
           {{ form|crispy }}
         {% endif %}

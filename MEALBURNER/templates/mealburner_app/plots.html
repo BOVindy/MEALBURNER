@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+
+<div id='home_background' class="my_jumbo jumbotron jumbotron-fluid">
+  
 <form class="add_form" action="{% url 'view_cal' %}" method="POST">
 
 <img style="width: 50%; height: 50%;" alt="Image description"src="{% static 'mealburner_app/graphs/cal_plot.png' %}"/>
+
+</div>
+
+
 
 
 {% endblock %}
