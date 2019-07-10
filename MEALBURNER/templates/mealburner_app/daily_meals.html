@@ -15,7 +15,7 @@
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <a href="{% url 'create_meal' %}" class="btn btn-primary add_item">Add a meal</a>
+                <a href="{% url 'create_meal' %}" class="btn btn-dark add_item">Add a meal</a>
             </div>
         </div>
         <br>
@@ -23,34 +23,42 @@
         {% if daily_meals %}
         <div class="list_table">
             <div class="row">
-                <div class="col-3">meal:</div>
-                <div class="col-2">calories:</div>
-                <div class="col-2">protein:</div>
-                <div class="col-2">carbohydrates:</div>
-                <div class="col-2">fats:</div>
+                <div class="col-2">meal:</div>
+                <div class="col-1">calories:</div>
+                <div class="col-1">protein:</div>
+                <div class="col-1">carbohydrates:</div>
+                <div class="col-1">fats:</div>
                 <div class="col-2">meal type:</div>
-                <div class="col-3">date:</div>
+                <div class="col-2">date:</div>
                 <div class="col-2"> </div>
                 <br>
             </div>
 
             {% for meal in daily_meals %}
             
-            
-
+            <div class="row">
                 <div class="col-2">
+                    <a href="{% url 'update_meal' meal.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="id" value="{{ meal.id }}">
+                        <input type="hidden" name="update" value=True>
+                        <input class="td_button btn btn-dark" type="submit" value="{{ meal.food_name }}">
+                    </a>
+                </div>
+
+                <div class="col-1">
                     {{ meal.calories }}
                 </div>
 
-                <div class="col-2">
+                <div class="col-1">
                     {{ meal.protein }}
                 </div> 
                 
-                <div class="col-2">
+                <div class="col-1">
                     {{ meal.carbohydrates }}
                 </div> 
                 
-                <div class="col-2">
+                <div class="col-1">
                     {{ meal.fats }}
                 </div>
 
@@ -58,7 +66,7 @@
                     {{ meal.meal_type }}
                 </div>
 
-                <div class="col-3">
+                <div class="col-2">
                     {{ meal.date }}
                 </div>
 
@@ -80,22 +88,31 @@
         {% else %}
         <div class="list_table">
             <div class="row">
-                <div class="col-3">meal:</div>
-                <div class="col-2">calories:</div>
+                <div class="col-2">meal:</div>
+                <div class="col-1">calories:</div>
+                <div class="col-1">protein:</div>
+                <div class="col-1">carbohydrates:</div>
+                <div class="col-1">fats:</div>
                 <div class="col-2">meal type:</div>
-                <div class="col-3">date:</div>
+                <div class="col-2">date:</div>
                 <div class="col-2"> </div>
                 <br>
             </div>
 
             <div class="row">
-                <div class="col-3">You haven't added any meals yet</div>
+                <div class="col-2">You haven't added any meals yet</div>
 
-                <div class="col-2">get</div>
+                <div class="col-1">get</div>
 
-                <div class="col-2">to</div>
+                <div class="col-1">to</div>
 
-                <div class="col-3">work</div>
+                <div class="col-1">work</div>
+
+                <div class="col-1"> </div>
+
+                <div class="col-2"> </div>
+
+                <div class="col-2"> </div>
 
                 <div class="col-2"> </div>
             </div>
@@ -113,7 +130,7 @@
         </div>
         <div class="row">
             <div class="col-12 text-center">
-                <a href="{% url 'create_activity' %}" class="btn btn-primary add_item">Add an activity</a>
+                <a href="{% url 'create_activity' %}" class="btn btn-dark add_item">Add an activity</a>
             </div>
         </div>
         <br>
@@ -138,7 +155,7 @@
                             {% csrf_token %}
                             <input type="hidden" name="id" value="{{ activity.id }}">
                             <input type="hidden" name="update" value=True>
-                            <input class="td_button btn btn-success" type="submit" value="{{ activity.activity }}">
+                            <input class="td_button btn btn-dark" type="submit" value="{{ activity.activity }}">
                         </a>
                     </div>
                     
@@ -202,7 +219,7 @@
             <div class="col-12">your carbohydrate balance is currently at {{ daily_carbs }} grams</div>
             <div class="col-12">your fat balance is currently at {{ daily_fats }} grams</div>
             <div class="col-12">your recommended protein is currently at {{ recommended_protein }} grams</div>
-            <div class="col-12">your recommened carbohydrate is currently at {{ recommended_carbs }} grams</div>
+            <div class="col-12">your recommended carbohydrate is currently at {{ recommended_carbs }} grams</div>
             <div class="col-12">your recommended fat is currently at {{ recommended_fat }} grams</div>
         </div>
 
