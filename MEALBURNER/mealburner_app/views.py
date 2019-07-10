@@ -402,8 +402,10 @@ def pie_chart(request, id):
 
     pie_chart = plt.pie(nutrient_list, explode=explode, labels= labels, shadow=True, autopct='%1.1f%%')
     print(os.getcwd())
+    plt.title('Nutritional Breakdown')
     plt.savefig(os.getcwd() + '/mealburner_app/static/mealburner_app/graphs/pie_chart.png')
     plt.close()
+
 
     return render(request, 'mealburner_app/plots2.html')
 

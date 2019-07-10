@@ -294,7 +294,7 @@ div.list_table div.row:nth-of-type(odd){
   text-shadow: grey 2px 2px 0;
 }
 #login_out{
-  width:200px;
+  width:100px;
 }
 #learn_more{
   height: 45px;
@@ -334,11 +334,11 @@ div.list_table div.row:nth-of-type(odd){
 } */
 #meal_submit{
   width:300px;
-  margin-left: 800px;
+  
 }
 #act_submit{
   width:300px;
-  margin-left: 800px;
+  
 }
 #first_last{
   font-size: 50px;
@@ -380,5 +380,8 @@ div.list_table div.row:nth-of-type(odd){
 }
 #col_head{
   width:500px;
+}
+#create_acct{
+  width: 150px;
 }
 
