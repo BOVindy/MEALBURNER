@@ -1,67 +1,7 @@
 
-{% extends 'base.html' %}
-
-{% block content %}
-
-    <br>
-    <br>
-    <br>
-    <div class="container-fluid">
-        <br>
-        <div class="row">
-            <div class="col-12 text-center">
-                <a class="btn btn-dark" href="http://127.0.0.1:8000/">BACK</a>
-            </div>
-        </div>
-        <br>
-
-        <div class="row">
-            <div class="col-12 text-center">
-                <h2>Login<h2>
-            </div>
-        </div>
-        <br>
-
-
-        <form method="POST">
-            {% csrf_token %}
-            <br>
-
-            <div class="row">
-                <div class="col-5"> </div>
-                <div class="col-2 text-center">
-                    <div class="login_card_box">
-                        <div class="form-group">
-                            <label for="{{ form.username.login_username }}">username:</label>
-                            <input name="{{ form.username.login_username }}" type="text" class="form-control" id="login_username_input" placeholder="Smitty Werbenjagermanjenson">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-5"> </div>
-            </div>
-
-            <div class="row">
-                <div class="col-5"> </div>
-                <div class="col-2 text-center">
-                    <div class="login_card_box">
-                        <div class="form-group">
-                            <label for="{{ form.password.login_password }}">password:</label>
-                            <input name="{{ form.password.login_password }}" type="password" class="form-control" id="login_password_input" placeholder="NumberOne">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-5"> </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12 text-center">
-                    <button type="submit" class="btn btn-dark">submit</button>
-                </div>
-            </div>
-        <br>
-
-        </form>
-
-    </div>
-
-{% endblock content %}
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
